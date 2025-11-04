@@ -1,0 +1,352 @@
+/*tipografìa */
+:root {
+    --color-principal: #2e4a2a;
+    /* Verde oscuro */
+    --color-secundario: #5b7556;
+    /* Verde medio */
+    --color-acento: #85a661;
+    /* Verde claro */
+    --color-fondo: #fbfbfb;
+    /* Blanco roto */
+    --color-texto: #444;
+    --fuente-principal: Roboto, sans-serif;
+}
+
+/*se añadio estilo base */
+body {
+    font-family: var(--fuente-principal);
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+
+h3,
+h4 {
+    color: var(--color-principal);
+    font-weight: 300;
+}
+
+.slides h1,
+h2 {
+    color: #fbfbfb;
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+    font-weight: 700;
+}
+
+.nosotros_seccion h2,
+.productos_seccion h2,
+.gallery h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #008000;
+}
+
+nav a {
+    color: var(--color-acento);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--color-principal);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*Layout general */
+main,
+footer,
+header {
+    padding: 2rem 5%;
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.menu_principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu_principal img {
+    height: 50px;
+    width: auto;
+}
+
+.menu_principal ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.menu_principal a {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: var(--color-secundario);
+}
+
+/*carrusel */
+
+.hero_seccion {
+    position: relative;
+    overflow: hidden;
+    max-height: 600px;
+}
+
+.carousel input {
+    display: none;
+    /* Oculta los radio buttons */
+}
+
+.slides {
+    display: flex;
+    width: 100vw;
+    /* 3 slides */
+    transition: transform 1s ease-in-out;
+}
+
+.slide {
+    width: 100vw;
+    height: 77vh;
+    flex-shrink: 0;
+    opacity: 1;
+    transition: transform 1s ease-in-out;
+    position: relative;
+}
+
+.slide img {
+    width: 1300px;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+    object-fit: cover;
+}
+
+/* Texto sobre la imagen */
+.caption {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.caption h1 {
+    font-size: 2.5rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.caption p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0;
+}
+
+/* Controles */
+.controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.controls label {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.controls label:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Mostrar slides según el radio button */
+#slide1:checked~.slides {
+    transform: translateX(0%);
+}
+
+#slide2:checked~.slides {
+    transform: translateX(-100%);
+}
+
+#slide3:checked~.slides {
+    transform: translateX(-200%);
+}
+
+/* seccion de pruductos*/
+.productos_seccion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.productos_seccion__titulo {
+    display: inline;
+}
+
+.producto {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+}
+.producto p{
+    text-align:left;
+}
+.nuestros_productos{
+    color: #008000;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+.producto figure {
+    margin: 0 0 1rem 0;
+}
+
+
+.btn_producto {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-acento);
+    color: #fff;
+    border-radius: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn_producto:hover {
+    background-color: var(--color-secundario);
+}
+
+/* se agrego laseccion de galeria */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 2rem 5%;
+}
+
+.gallery figure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/*se añadio la seccion de footer */
+footer {
+    text-align: center;
+    background-color: var(--color-principal);
+    color: #fff;
+    padding: 2rem 5%;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: var(--color-acento);
+}
+
+.footer-social ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-social img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    /* recorta el espacio extra */
+    display: block;
+}
+
+
+
+.footer-social img:hover {
+    transform: scale(1.2);
+}
+
+
+footer p,
+footer h4 {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 1rem 0 0;
+}
+
+.nosotros_seccion {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+
+.nosotros_seccion p {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.btn_nosotros {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 25px;
+    background-color: #008000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn_nosotros:hover {
+    background-color: #006400;
+}
