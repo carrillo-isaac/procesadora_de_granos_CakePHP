@@ -15,15 +15,14 @@ $this->disableAutoLayout();
 
 <body>
     <header>
-        <nav class="menu_principal">
-            <!--menu principal -->
-            <a href="/index.html">
-                <img src="/assets\img\logo\logo_miro.webp" alt="Logo de Arroz miro" />
+        <nav class="menu_principal"> <!--menu principal -->
+            <a href="/pages/home">
+                <img src="/img/logo/logo_miro.webp" alt="Logo de Arroz miro">
             </a>
             <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="nosotros.html">nosotros</a></li>
-                <li><a href="productos.html">Productos</a></li>
+                <li><a href="/pages/home">Inicio</a></li>
+                <li><a href="/pages/nosotros">nosotros</a></li>
+                <li><a href="/pages/productos">Productos</a></li>
                 <li><a href="#">Noticias</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
@@ -33,10 +32,10 @@ $this->disableAutoLayout();
         <h1 class="nuestros_productos">Nuestros Productos</h1>
         <section class="productos_seccion">
             <!--Primera fila de productos-->
-            <article class="producto" data-nombre="Porotos Rojos" data-imagen="../assets/img/products/porotos_Rojos.webp" data-descripcion="Ideales para guisos sustanciosos y platos con sabor casero." data-precio="$1.55">
+            <article class="producto" data-nombre="Porotos Rojos" data-imagen="/img/products/porotos_Rojos.webp" data-descripcion="Ideales para guisos sustanciosos y platos con sabor casero." data-precio="$1.55">
                 <h3>Porotos Rojos</h3>
                 <figure>
-                    <img src="../assets/img/products/porotos_Rojos.webp" alt="Porotos Rojos" />
+                    <img src="/img/products/porotos_Rojos.webp" alt="Porotos Rojos" />
                     <figcaption>Porotos Rojos 0.45KG</figcaption>
                 </figure>
                 <p>Ideales para guisos sustanciosos y platos con sabor casero.</p>
@@ -45,12 +44,12 @@ $this->disableAutoLayout();
                 <a class="btn_producto">ver más</a>
             </article>
             <article class="producto" 
-            data-nombre="Arroz Especial" data-imagen="../assets/img/products/arroz 2kg.webp" data-descripcion=" Arroz de primera calidad, cultivado en Chiriquí con procesos modernos de selección y empaque." 
+            data-nombre="Arroz Especial" data-imagen="/img/products/arroz 2kg.webp" data-descripcion=" Arroz de primera calidad, cultivado en Chiriquí con procesos modernos de selección y empaque." 
             data-precio="$3.19">
                 
                 <h3>Arroz Especial</h3>
                 <figure>
-                    <img src="../assets/img/products/arroz 2kg.webp" alt="Arroz Especial" />
+                    <img src="/img/products/arroz 2kg.webp" alt="Arroz Especial" />
                     <figcaption>Arroz especial 2KG</figcaption>
                 </figure>
                 <p>
@@ -63,13 +62,13 @@ $this->disableAutoLayout();
             </article>
             <article class="producto"
             data-nombre="Frijol Chiricano" 
-            data-imagen="../assets/img/products/frijol_chiricano.webp" 
+            data-imagen="/img/products/frijol_chiricano.webp" 
             data-descripcion="Un tesoro panameño, conocido por su sabor auténtico y textura suave,
                     perfecto para refritos o sopas." 
             data-precio="$1.35">
                 <h3>Frijol Chiricano</h3>
                 <figure>
-                    <img src="../assets/img/products/frijol_chiricano.webp" alt="Frijol Chiricano" />
+                    <img src="/img/products/frijol_chiricano.webp" alt="Frijol Chiricano" />
                     <figcaption>Frijol Chiricano 0.45KG</figcaption>
                 </figure>
                 <p>
@@ -82,12 +81,12 @@ $this->disableAutoLayout();
             </article>
             <article class="producto"
             data-nombre="Frijol Chileno" 
-            data-imagen="../assets/img/products/Frijol_chileno.webp" 
+            data-imagen="/img/products/Frijol_chileno.webp" 
             data-descripcion="La base de recetas ricas en fibra y tradición, versátil y nutritivo." 
             data-precio="$1.55 ">
                 <h3>Frijol Chileno</h3>
                 <figure>
-                    <img src="../assets/img/products/Frijol_chileno.webp" alt="Arroz Especial" />
+                    <img src="/img/products/Frijol_chileno.webp" alt="Arroz Especial" />
                     <figcaption>Frijol Chileno 0.45KG</figcaption>
                 </figure>
                 <p>
@@ -100,12 +99,12 @@ $this->disableAutoLayout();
             <!--Segunda fila de productos-->
             <article class="producto"
             data-nombre="Lentejas" 
-            data-imagen="../assets/img/products/lentejas.webp" 
+            data-imagen="/img/products/lentejas.webp" 
             data-descripcion="La joya de la dieta, listas para transformar tus potajes en comidas rápidas, nutritivas y llenas de energía." 
             data-precio="$1.55 ">
                 <h3>Lentejas</h3>
                 <figure>
-                    <img src="../assets/img/products/lentejas.webp" alt="Lentejas" />
+                    <img src="/img/products/lentejas.webp" alt="Lentejas" />
                     <figcaption>Lentejas 0.45KG</figcaption>
                 </figure>
                 <p>
@@ -119,12 +118,12 @@ $this->disableAutoLayout();
 
             <article class="producto"
             data-nombre="Frijol Negro" 
-            data-imagen="../assets/img/products/frijol_negro.webp" 
+            data-imagen="/img/products/frijol_negro.webp" 
             data-descripcion="Con un color intenso y sabor robusto, perfectos para acompañamientos o platos principales." 
             data-precio="$1.69">
                 <h3>Frijol Negro</h3>
                 <figure>
-                    <img src="../assets/img/products/frijol_negro.webp" alt="Frijol negro" />
+                    <img src="/img/products/frijol_negro.webp" alt="Frijol negro" />
                     <figcaption>Frijol Negro 0.45KG</figcaption>
                 </figure>
                 <p>
@@ -137,12 +136,12 @@ $this->disableAutoLayout();
             </article>
             <article class="producto"
             data-nombre="Sorgo en Grano" 
-            data-imagen="../assets/img/products/sorgo.webp" 
+            data-imagen="/img/products/sorgo.webp" 
             data-descripcion=" Alternativa versátil y nutritiva. Ideal para sustituir al arroz o la quinoa, añadiendo fibra y proteína a tus ensaladas y guisos saludables." 
             data-precio="$1.25">
                 <h3>Sorgo en Grano</h3>
                 <figure>
-                    <img src="../assets/img/products/sorgo.webp" alt="Arroz Especial" />
+                    <img src="/img/products/sorgo.webp" alt="Arroz Especial" />
                     <figcaption>Sorgo en grano 0.45KG</figcaption>
                 </figure>
                 <p>
@@ -156,12 +155,12 @@ $this->disableAutoLayout();
             </article>
             <article class="producto"
             data-nombre="Maiz en Grano" 
-            data-imagen="../assets/img/products/maiz_crudo.jpg" 
+            data-imagen="/img/products/maiz_crudo.jpg" 
             data-descripcion="Sabor tradicional e inconfundible. Perfecto para sopas, caldos sustanciosos y la base de auténticas recetas panameñas." 
             data-precio="$0.85">
                 <h3>Maiz en Grano</h3>
                 <figure>
-                    <img src="../assets/img/products/maiz_crudo.jpg" alt="Maiz en grano" />
+                    <img src="/img/products/maiz_crudo.jpg" alt="Maiz en grano" />
                     <figcaption>Maiz en grano 0.45KG</figcaption>
                 </figure>
                 <p>
@@ -198,12 +197,12 @@ $this->disableAutoLayout();
                 <ul>
                     <li>
                         <a href="https://www.facebook.com/tu_pagina" target="_blank">
-                            <img src="../assets/img/icons/facebook.png" alt="Facebook" />
+                            <img src="/img/icons/facebook.png" alt="Facebook" />
                         </a>
                     </li>
                     <li>
                         <a href="https://www.instagram.com/tu_pagina" target="_blank">
-                            <img src="../assets/img/icons/instagram.png" alt="Instagram" />
+                            <img src="/img/icons/instagram.png" alt="Instagram" />
                         </a>
                     </li>
                 </ul>
