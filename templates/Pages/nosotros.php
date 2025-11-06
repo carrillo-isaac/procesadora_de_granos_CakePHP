@@ -13,13 +13,13 @@ $this->disableAutoLayout();
 <body>
     <header>
         <nav class="menu_principal"> <!--menu principal -->
-            <a href="/index.html">
-                <img src="/assets\img\logo\logo_miro.webp" alt="Logo de Arroz miro">
+            <a href="/pages/home">
+                <img src="/img/logo/logo_miro.webp" alt="Logo de Arroz miro">
             </a>
             <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="nosotros.html">nosotros</a></li>
-                <li><a href="productos.html">Productos</a></li>
+                <li><a href="/pages/home">Inicio</a></li>
+                <li><a href="/pages/nosotros">nosotros</a></li>
+                <li><a href="/pages/productos">Productos</a></li>
                 <li><a href="#">Noticias</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
@@ -42,12 +42,12 @@ $this->disableAutoLayout();
                 <ul>
                     <li>
                         <a href="https://www.facebook.com/tu_pagina" target="_blank">
-                            <img src="../assets/img/icons/facebook.png" alt="Facebook">
+                            <img src="/img/icons/facebook.png" alt="Facebook">
                         </a>
                     </li>
                     <li>
                         <a href="https://www.instagram.com/tu_pagina" target="_blank">
-                            <img src="../assets/img/icons/instagram.png" alt="Instagram">
+                            <img src="/img/icons/instagram.png" alt="Instagram">
                         </a>
                     </li>
                 </ul>
