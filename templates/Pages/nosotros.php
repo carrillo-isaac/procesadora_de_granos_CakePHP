@@ -13,13 +13,13 @@ $this->disableAutoLayout();
 <body>
     <header>
         <nav class="menu_principal"> <!--menu principal -->
-            <a href="/index.html">
-                <img src="/img/logo/logo_miro.webp" alt="Logo de Arroz Miró">
+            <a href="/pages/home">
+                <img src="/img/logo/logo_miro.webp" alt="Logo de Arroz miro">
             </a>
             <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="nosotros.html" class="active">Nosotros</a></li>
-                <li><a href="productos.html">Productos</a></li>
+                <li><a href="/pages/home">Inicio</a></li>
+                <li><a href="/pages/nosotros">nosotros</a></li>
+                <li><a href="/pages/productos">Productos</a></li>
                 <li><a href="#">Noticias</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
