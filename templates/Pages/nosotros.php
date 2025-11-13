@@ -1,3 +1,6 @@
+<?php
+$this->disableAutoLayout();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,7 +14,7 @@
     <header>
         <nav class="menu_principal"> <!--menu principal -->
             <a href="/index.html">
-                <img src="/assets/img/logo/logo_miro.webp" alt="Logo de Arroz Miró">
+                <img src="/img/logo/logo_miro.webp" alt="Logo de Arroz Miró">
             </a>
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
@@ -92,12 +95,12 @@ Utilizamos métodos de cultivo que conservan el suelo, reducen el uso de agua y 
                 <ul>
                     <li>
                         <a href="https://www.facebook.com/tu_pagina" target="_blank">
-                            <img src="../assets/img/icons/facebook.png" alt="Facebook">
+                            <img src="/img/icons/facebook.png" alt="Facebook">
                         </a>
                     </li>
                     <li>
                         <a href="https://www.instagram.com/tu_pagina" target="_blank">
-                            <img src="../assets/img/icons/instagram.png" alt="Instagram">
+                            <img src="/img/icons/instagram.png" alt="Instagram">
                         </a>
                     </li>
                 </ul>
