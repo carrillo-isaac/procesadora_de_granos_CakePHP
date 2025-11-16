@@ -20,7 +20,7 @@ $this->disableAutoLayout();
             <ul>
                 <li><a href="/pages/home">Inicio</a></li>
                 <li><a href="/pages/nosotros">nosotros</a></li>
-                <li><a href="/pages/productos">Productos</a></li>
+                <li><a href="/pages/productos_static">Productos</a></li>
                 <li><a href="#">Noticias</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
@@ -83,7 +83,7 @@ $this->disableAutoLayout();
                 <p>Arroz de primera calidad, cultivado en Chiriquí con procesos modernos de selección y empaque.</p>
                 <p><strong>Precio:</strong> $3.19</p>
                 <p>Precio/Unidad</p>
-                <a href="/pages/productos" class="btn_producto">ver más</a>
+                <a href="/pages/productos_static_static" class="btn_producto">ver más</a>
             </article>
             <article class="producto">
                 <h3>Frijoles Chiricanos</h3>
@@ -94,7 +94,7 @@ $this->disableAutoLayout();
                 <p>Disfruta del auténtico sabor de los Frijoles Chiricanos. Perfectos para sopas, guisos y acompañamientos tradicionales.</p>
                 <p><strong>Precio:</strong>$1.35</p>
                 <p>Precio/Unidad</p>
-                <a href="/pages/productos" class="btn_producto">ver más</a>
+                <a href="/pages/productos_static_static" class="btn_producto">ver más</a>
             </article>
             <article class="producto">
                 <h3>Porotos Rojos</h3>
@@ -105,7 +105,7 @@ $this->disableAutoLayout();
                 <p>Arroz de primera calidad, cultivado en Chiriquí con procesos modernos de selección y empaque.</p>
                 <p><strong>Precio:</strong> $1.55</p>
                 <p>Precio/Unidad</p>
-                <a href="/pages/productos" class="btn_producto">ver más</a>
+                <a href="/pages/productos_static_static" class="btn_producto">ver más</a>
             </article>
         </section>
     </main>
