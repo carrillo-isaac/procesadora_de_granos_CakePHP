@@ -1,5 +1,5 @@
 <?php
-// Determina si estamos en la página de login (Controlador 'Users', Acción 'login')
+
 $isLoginPage = ($this->getRequest()->getParam('action') === 'login' && $this->getRequest()->getParam('controller') === 'Users');
 $bodyClass = $isLoginPage ? 'login-page' : '';
 ?>
