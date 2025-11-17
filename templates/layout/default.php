@@ -1,32 +1,59 @@
-<div class="usuarios form content" style="max-width: 400px; margin: 50px auto; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px;">
-    <h3 style="text-align: center; margin-bottom: 30px;">
-        <i class="bi bi-person-circle" style="font-size: 48px; display: block; margin-bottom: 10px;"></i>
-        <?= __('Iniciar Sesión') ?>
-    </h3>
+<?php
+// Determina si estamos en la página de login (Controlador 'Users', Acción 'login')
+$isLoginPage = ($this->getRequest()->getParam('action') === 'login' && $this->getRequest()->getParam('controller') === 'Users');
+$bodyClass = $isLoginPage ? 'login-page' : '';
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <?= $this->Html->charset() ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        <?= $this->fetch('title') ?>
+    </title>
+    <?= $this->Html->meta('icon') ?>
+
+    <?= $this->Html->css(['style', 'modal', 'nosotros']) ?>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
+</head>
+
+<body class="<?= $bodyClass ?>">
     
-    <?= $this->Form->create() ?>
-    <fieldset style="border: none;">
-        <?= $this->Form->control('email', [
-            'label' => 'Correo electrónico',
-            'type' => 'email',
-            'required' => true,
-            'placeholder' => 'correo@ejemplo.com'
-        ]) ?>
-        <?= $this->Form->control('password', [
-            'label' => 'Contraseña',
-            'type' => 'password',
-            'required' => true,
-            'placeholder' => '••••••••'
-        ]) ?>
-    </fieldset>
+    <?php if (!$isLoginPage): ?>
+    <header>
+        <?= $this->Html->image('Miro-logo.png', ['alt' => 'Logo Miró', 'height' => '50px', 'class' => 'menu_principal__logo']) ?>
+        <nav class="menu_principal">
+            <ul>
+                <li><?= $this->Html->link('Inicio', ['controller' => 'Pages', 'action' => 'home']) ?></li>
+                <li><?= $this->Html->link('Nosotros', ['controller' => 'Pages', 'action' => 'about']) ?></li>
+                <li><?= $this->Html->link('Productos', ['controller' => 'Products', 'action' => 'index']) ?></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <button class="btn-cart"><i class="bi bi-cart-fill"></i></button> 
+            <?= $this->Html->link('<i class="bi bi-person-circle"></i>', ['controller' => 'Users', 'action' => 'profile'], ['escape' => false, 'class' => 'btn-profile']) ?>
+        </div>
+    </header>
+    <?php endif; ?>
     
-    <?= $this->Form->button(__('Ingresar'), [
-        'style' => 'width: 100%; margin-top: 20px;'
-    ]); ?>
-    <?= $this->Form->end() ?>
-    
-    <p style="text-align: center; margin-top: 20px;">
-        ¿No tienes cuenta? 
-        <?= $this->Html->link('Regístrate aquí', ['action' => 'register']) ?>
-    </p>
-</div>
+    <main class="main">
+        <div class="container">
+            <?= $this->Flash->render() ?>
+            <?= $this->fetch('content') ?>
+        </div>
+    </main>
+
+    <?php if (!$isLoginPage): ?>
+    <footer>
+        </footer>
+    <?php endif; ?>
+
+    <?= $this->fetch('scriptBottom') ?>
+</body>
+</html>
