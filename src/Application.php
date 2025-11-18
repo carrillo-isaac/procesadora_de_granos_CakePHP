@@ -1,19 +1,6 @@
 <?php
 declare(strict_types=1);
 
-/**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link      https://cakephp.org CakePHP(tm) Project
- * @since     3.3.0
- * @license   https://opensource.org/licenses/mit-license.php MIT License
- */
 namespace App;
 
 use Cake\Core\Configure;
@@ -60,37 +47,40 @@ class Application extends BaseApplication
      * @param \Cake\Http\MiddlewareQueue $middlewareQueue The middleware queue to setup.
      * @return \Cake\Http\MiddlewareQueue The updated middleware queue.
      */
-    public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
-    {
-        $middlewareQueue
-            // Catch any exceptions in the lower layers,
-            // and make an error page/response
-            ->add(new ErrorHandlerMiddleware(Configure::read('Error'), $this))
+   public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
+{
+    // Error handler
+    $middlewareQueue->add(new ErrorHandlerMiddleware(Configure::read('Error'), $this));
 
-            // Handle plugin/theme assets like CakePHP normally does.
-            ->add(new AssetMiddleware([
-                'cacheTime' => Configure::read('Asset.cacheTime'),
-            ]))
+    // Serve assets
+    $middlewareQueue->add(new AssetMiddleware([
+        'cacheTime' => Configure::read('Asset.cacheTime'),
+    ]));
 
-            // Add routing middleware.
-            // If you have a large number of routes connected, turning on routes
-            // caching in production could improve performance.
-            // See https://github.com/CakeDC/cakephp-cached-routing
-            ->add(new RoutingMiddleware($this))
+    // Routing
+    $middlewareQueue->add(new RoutingMiddleware($this));
 
-            // Parse various types of encoded request bodies so that they are
-            // available as array through $request->getData()
-            // https://book.cakephp.org/5/en/controllers/middleware.html#body-parser-middleware
-            ->add(new BodyParserMiddleware())
+    // Body Parser para JSON (muy importante para APIs)
+    $middlewareQueue->add(new BodyParserMiddleware());
 
-            // Cross Site Request Forgery (CSRF) Protection Middleware
-            // https://book.cakephp.org/5/en/security/csrf.html#cross-site-request-forgery-csrf-middleware
-            ->add(new CsrfProtectionMiddleware([
-                'httponly' => true,
-            ]));
+    // -------------------------
+    // CSRF con excepción para API
+    // -------------------------
 
-        return $middlewareQueue;
-    }
+    $csrf = new CsrfProtectionMiddleware([
+        'httponly' => true,
+    ]);
+
+    // Esta línea DESACTIVA el CSRF solo para prefijo "Api"
+    $csrf->skipCheckCallback(function ($request) {
+        return $request->getParam('prefix') === 'Api';
+    });
+
+    // Agregamos el middleware csrf corregido
+    $middlewareQueue->add($csrf);
+
+    return $middlewareQueue;
+}
 
     /**
      * Register application container services.
