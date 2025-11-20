@@ -46,10 +46,10 @@ return function (RouteBuilder $routes): void {
 
         $builder->fallbacks();
     });
-
-    /*
-     * If you need a different set of middleware or none at all,
-     * open new scope and define routes there.
-     * ...
-     */
+    
+    $routes->prefix('Api', function ($routes) {
+    $routes->setExtensions(['json']);
+    //crea automaticamente las rutas necesarios para los metodo GET, POST, PUT, DELETE
+    $routes->resources('Productos');
+});
 };
