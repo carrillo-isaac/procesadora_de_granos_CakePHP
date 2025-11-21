@@ -1,0 +1,47 @@
+/*se añadio la seccion de footer */
+footer {
+    text-align: center;
+    background-color: var(--color-principal);
+    color: #fff;
+    padding: 2rem 5%;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: var(--color-acento);
+}
+
+.footer-social ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-social img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    /* recorta el espacio extra */
+    display: block;
+}
+
+
+
+.footer-social img:hover {
+    transform: scale(1.2);
+}
+
+
+footer p,
+footer h4 {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 1rem 0 0;
+}

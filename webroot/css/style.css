@@ -46,16 +46,6 @@ h2 {
     color: #008000;
 }
 
-nav a {
-    color: var(--color-acento);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: var(--color-principal);
-}
-
 img {
     max-width: 100%;
     height: auto;
@@ -69,37 +59,7 @@ header {
     padding: 2rem 5%;
 }
 
-header {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
 
-.menu_principal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu_principal img {
-    height: 50px;
-    width: auto;
-}
-
-.menu_principal ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-}
-
-.menu_principal a {
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    color: var(--color-secundario);
-}
 
 /*carrusel */
 
@@ -270,54 +230,6 @@ header {
 
 .gallery img:hover {
     transform: scale(1.05);
-}
-
-/*se añadio la seccion de footer */
-footer {
-    text-align: center;
-    background-color: var(--color-principal);
-    color: #fff;
-    padding: 2rem 5%;
-    font-size: 0.9rem;
-}
-
-footer a {
-    color: #fff;
-    text-decoration: underline;
-}
-
-footer a:hover {
-    color: var(--color-acento);
-}
-
-.footer-social ul {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-social img {
-    width: 35px;
-    height: 35px;
-    object-fit: cover;
-    /* recorta el espacio extra */
-    display: block;
-}
-
-
-
-.footer-social img:hover {
-    transform: scale(1.2);
-}
-
-
-footer p,
-footer h4 {
-    color: rgba(255, 255, 255, 0.8);
-    margin: 1rem 0 0;
 }
 
 .nosotros_seccion {
