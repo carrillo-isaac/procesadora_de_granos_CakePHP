@@ -6,7 +6,7 @@
         <ul class="menu-links">
             <li><a href="/pages/home">Inicio</a></li>
             <li><a href="/pages/nosotros">Nosotros</a></li>
-            <li><a href="/pages/productos_static">Productos</a></li>
+            <li><a href="/pages/productos">Productos</a></li>
 
             <!-- Carrito -->
             <li>

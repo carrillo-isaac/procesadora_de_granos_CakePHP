@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller\Api;
@@ -11,8 +12,29 @@ class ProductosController extends ApiController
     {
         parent::initialize();
         // $this->loadModel('Productos'); // 
-        
+
     }
+
+    public function destacados()
+    {
+        // Obtenemos los campos esenciales para devolver al frontend
+        $query = $this->Productos->find()
+            ->select(['id', 'nombre', 'descripcion', 'categoria_id', 'precio', 'ruta_imagen', 'creado_en'])
+            ->order(['creado_en' => 'DESC']) // <-- ordenar por el campo correcto
+            ->limit(6);
+
+        // Ejecutar la query y convertir el resultado a array serializable
+        // En CakePHP 5 -> all() retorna un ResultSet; toArray() es seguro y serializable
+        $lista = $query->all()->toArray();
+
+        $this->set([
+            'status' => 'success',
+            'data' => $lista
+        ]);
+
+        $this->viewBuilder()->setOption('serialize', ['status', 'data']);
+    }
+
 
     // GET /api/productos.json
     public function index()
@@ -41,28 +63,28 @@ class ProductosController extends ApiController
 
     // POST /api/productos.json
     public function add()
-{
-    $this->request->allowMethod(['post']); 
+    {
+        $this->request->allowMethod(['post']);
 
-    $productos = $this->fetchTable('Productos');
+        $productos = $this->fetchTable('Productos');
 
-    $producto = $productos->newEmptyEntity();
-    $producto = $productos->patchEntity($producto, $this->request->getData());
+        $producto = $productos->newEmptyEntity();
+        $producto = $productos->patchEntity($producto, $this->request->getData());
 
-    if ($productos->save($producto)) {
-        $this->set([
-            'status' => 'success',
-            'data' => $producto
-        ]);
-    } else {
-        $this->set([
-            'status' => 'error',
-            'errors' => $producto->getErrors()
-        ]);
+        if ($productos->save($producto)) {
+            $this->set([
+                'status' => 'success',
+                'data' => $producto
+            ]);
+        } else {
+            $this->set([
+                'status' => 'error',
+                'errors' => $producto->getErrors()
+            ]);
+        }
+
+        $this->viewBuilder()->setOption('serialize', ['status', 'data', 'errors']);
     }
-
-    $this->viewBuilder()->setOption('serialize', ['status', 'data', 'errors']);
-}
 
 
     // PUT /api/productos/1.json

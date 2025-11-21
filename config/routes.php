@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Routes configuration.
  * ... (Copyright and license comments) ...
@@ -12,12 +13,13 @@ use Cake\Routing\RouteBuilder;
  * So you can use `$this` to reference the application class instance
  * if required.
  */
+
 return function (RouteBuilder $routes): void {
-    
+
     $routes->setRouteClass(DashedRoute::class);
 
     // =========================================================================
-    // ⚠️ RUTAS PERSONALIZADAS AÑADIDAS AQUÍ (FUERA DEL SCOPE PRINCIPAL)
+    //  RUTAS PERSONALIZADAS AÑADIDAS AQUÍ (FUERA DEL SCOPE PRINCIPAL)
     // =========================================================================
 
     // 1. Ruta canónica de LOGIN: Redirige /login al PagesController
@@ -32,24 +34,36 @@ return function (RouteBuilder $routes): void {
 
     // 4. Ruta de REGISTER: (Asumiendo que Register se quedó en UsuariosController)
     $routes->connect('/register', ['controller' => 'Usuarios', 'action' => 'register']);
-    
+
     // =========================================================================
-    // ⚠️ FIN DE RUTAS PERSONALIZADAS
+    //  FIN DE RUTAS PERSONALIZADAS
     // =========================================================================
 
 
     $routes->scope('/', function (RouteBuilder $builder): void {
-        
+
         $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
         $builder->connect('/pages/*', 'Pages::display');
 
         $builder->fallbacks();
     });
-    
+
     $routes->prefix('Api', function ($routes) {
-    $routes->setExtensions(['json']);
-    //crea automaticamente las rutas necesarios para los metodo GET, POST, PUT, DELETE
-    $routes->resources('Productos');
-});
+        $routes->resources('Productos', [
+            'map' => [
+                'destacados' => [
+                    'action' => 'destacados',
+                    'method' => 'GET',
+                    'path' => 'destacados'
+                ]
+            ]
+        ]);
+    });
+
+    $routes->prefix('Api', function ($routes) {
+        $routes->setExtensions(['json']);
+        //crea automaticamente las rutas necesarios para los metodo GET, POST, PUT, DELETE
+        $routes->resources('Productos');
+    });
 };
