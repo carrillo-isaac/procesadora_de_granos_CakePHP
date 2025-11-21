@@ -1,19 +1,6 @@
 <?php
 declare(strict_types=1);
 
-/**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link      https://cakephp.org CakePHP(tm) Project
- * @since     0.2.9
- * @license   https://opensource.org/licenses/mit-license.php MIT License
- */
 namespace App\Controller;
 
 use Cake\Core\Configure;
@@ -21,16 +8,59 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+// Se elimina la importación del modelo Usuarios (no necesaria al usar fetchTable)
 
 /**
  * Static content controller
  *
- * This controller will render views from templates/Pages/
+ * Este controlador manejará la lógica de login y logout.
  *
  * @link https://book.cakephp.org/5/en/controllers/pages-controller.html
  */
 class PagesController extends AppController
 {
+    // Se elimina el método initialize() porque ya no se necesita $this->loadModel()
+    
+    /**
+     * Login method (CORREGIDO para CakePHP 5)
+     */
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $email = $this->request->getData('email');
+            $password = $this->request->getData('password');
+            
+            // 🎯 Solución Definitiva: Usar fetchTable para obtener la instancia del modelo.
+            $UsuariosTable = $this->fetchTable('Usuarios');
+            
+            // Buscar el usuario usando la instancia obtenida
+            $usuario = $UsuariosTable->findByEmail($email)->first(); 
+            
+            if ($usuario && password_verify($password, $usuario->password)) {
+                $this->request->getSession()->write('Auth.User', [
+                    'id' => $usuario->id,
+                    'nombre' => $usuario->nombre,
+                    'email' => $usuario->email
+                ]);
+                $this->Flash->success(__('¡Bienvenido {0}!', $usuario->nombre));
+                // Redirección al home
+                return $this->redirect(['controller' => 'Pages', 'action' => 'display', 'home']); 
+            }
+            
+            $this->Flash->error(__('Correo o contraseña incorrectos'));
+        }
+    }
+    
+    /**
+     * Logout method (Añadido)
+     */
+    public function logout()
+    {
+        $this->request->getSession()->delete('Auth.User');
+        $this->Flash->success(__('Has cerrado sesión correctamente'));
+        return $this->redirect(['controller' => 'Pages', 'action' => 'display', 'home']);
+    }
+
     /**
      * Displays a view
      *
@@ -38,9 +68,9 @@ class PagesController extends AppController
      * @return \Cake\Http\Response|null
      * @throws \Cake\Http\Exception\ForbiddenException When a directory traversal attempt.
      * @throws \Cake\View\Exception\MissingTemplateException When the view file could not
-     *   be found and in debug mode.
+     * be found and in debug mode.
      * @throws \Cake\Http\Exception\NotFoundException When the view file could not
-     *   be found and not in debug mode.
+     * be found and not in debug mode.
      * @throws \Cake\View\Exception\MissingTemplateException In debug mode.
      */
     public function display(string ...$path): ?Response
