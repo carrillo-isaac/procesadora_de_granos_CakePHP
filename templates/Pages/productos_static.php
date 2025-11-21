@@ -1,33 +1,6 @@
-<?php
-$this->disableAutoLayout();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/modal.css" />
-    <title>Productos</title>
-</head>
-
 <body>
-    <header>
-        <nav class="menu_principal"> <!--menu principal -->
-            <a href="/pages/home">
-                <img src="/img/logo/logo_miro.webp" alt="Logo de Arroz miro">
-            </a>
-            <ul>
-                <li><a href="/pages/home">Inicio</a></li>
-                <li><a href="/pages/nosotros">nosotros</a></li>
-                <li><a href="/pages/productos">Productos</a></li>
-                <li><a href="#">Noticias</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
     <main>
         <h1 class="nuestros_productos">Nuestros Productos</h1>
         <section class="productos_seccion">
@@ -183,33 +156,6 @@ $this->disableAutoLayout();
             </div>
         </section>
     </main>
-    <footer>
-        <section class="footer-info">
-            <h4>Ubicación:</h4>
-            <address>
-                Vía Panamericana, San Pablo Viejo, Chiriquí. Tel: +507 775-6532 Email:
-                info@arrozmiro.com
-            </address>
-        </section>
-        <section class="footer-social">
-            <h4>Síguenos</h4>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="https://www.facebook.com/tu_pagina" target="_blank">
-                            <img src="/img/icons/facebook.png" alt="Facebook" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/tu_pagina" target="_blank">
-                            <img src="/img/icons/instagram.png" alt="Instagram" />
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </section>
-        <p>&copy; 2025 Arroz Miró. Todos los derechos reservados.</p>
-    </footer>
     <script src="/js/modal.js"></script>
 </body>
 

@@ -1,8 +1,6 @@
-<?php
-$this->disableAutoLayout();
-?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,31 +8,17 @@ $this->disableAutoLayout();
     <link rel="stylesheet" href="/css/nosotros.css">
     <title>Nosotros</title>
 </head>
-<body>
-    <header>
-        <nav class="menu_principal"> <!--menu principal -->
-            <a href="/pages/home">
-                <img src="/img/logo/logo_miro.webp" alt="Logo de Arroz miro">
-            </a>
-            <ul>
-                <li><a href="/pages/home">Inicio</a></li>
-                <li><a href="/pages/nosotros">nosotros</a></li>
-                <li><a href="/pages/productos">Productos</a></li>
-                <li><a href="#">Noticias</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
 
+<body>
     <main class="contenido-nosotros">
         <section class="intro-nosotros">
             <h1>¿Quiénes somos?</h1>
             <p>
                 En Procesadora de Granos Chiricanos, ofrecemos la mejor calidad de arroz y una variedad de granos básicos.
 
-Creemos firmemente en la importancia de la innovación y la sostenibilidad. Por eso, nos esforzamos por adoptar prácticas agrícolas que no solo mejoren la productividad sino que también protejan nuestro entorno natural.
+                Creemos firmemente en la importancia de la innovación y la sostenibilidad. Por eso, nos esforzamos por adoptar prácticas agrícolas que no solo mejoren la productividad sino que también protejan nuestro entorno natural.
 
-Utilizamos métodos de cultivo que conservan el suelo, reducen el uso de agua y minimizan el impacto ambiental, asegurando así un futuro más verde para las próximas generaciones.
+                Utilizamos métodos de cultivo que conservan el suelo, reducen el uso de agua y minimizan el impacto ambiental, asegurando así un futuro más verde para las próximas generaciones.
             </p>
         </section>
 
@@ -80,33 +64,6 @@ Utilizamos métodos de cultivo que conservan el suelo, reducen el uso de agua y 
         </section>
     </main>
 
-    <footer>
-        <section class="footer-info">
-            <h4>Ubicación: </h4>
-            <address>
-                Vía Panamericana, San Pablo Viejo, Chiriquí.<br>
-                Tel: +507 775-6532<br>
-                Email: info@arrozmiro.com
-            </address>
-        </section>
-        <section class="footer-social">
-            <h4>Síguenos</h4>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="https://www.facebook.com/tu_pagina" target="_blank">
-                            <img src="/img/icons/facebook.png" alt="Facebook">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/tu_pagina" target="_blank">
-                            <img src="/img/icons/instagram.png" alt="Instagram">
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </section>
-        <p>&copy; 2025 Arroz Miró. Todos los derechos reservados.</p>
-    </footer>   
 </body>
+
 </html>
