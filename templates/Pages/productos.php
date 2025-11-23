@@ -4,7 +4,7 @@
 <body>
     <div class="layout">
         <main class="contenido">
-            <h1 class="nuestros_productos">Nuestros Productos</h1>
+            <h1 class="nuestros_productos">Productos Recientes</h1>
 
             <div class="carousel-container">
                 <button id="btn-left" class="carousel-btn">‹</button>
