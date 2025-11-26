@@ -1,17 +1,16 @@
 <?php
-
 declare(strict_types=1);
 
-namespace App\Controller\Api;
+namespace App\Controller;
 
-use Cake\Controller\Controller;
+use App\Controller\AppController;
 
-class ApiController extends Controller
+class ApiController extends AppController
 {
     public function initialize(): void
     {
         parent::initialize();
-        // Indica que se trabajará con JSON
+
         $this->viewBuilder()->setClassName('Json');
         $this->viewBuilder()->setOption('serialize', true);
     }

@@ -3,28 +3,31 @@
 declare(strict_types=1);
 
 namespace App\Controller\Api;
+use App\Controller\ApiController;
+use Cake\Http\Exception\NotFoundException;
 
-use App\Controller\Api\ApiController;
 
+/**
+ * @property \App\Model\Table\ProductosTable $Productos
+ * @property \App\Model\Table\CategoriasTable $Categorias
+ */
 class ProductosController extends ApiController
 {
     public function initialize(): void
     {
         parent::initialize();
-        // $this->loadModel('Productos'); // 
-
+        $this->Productos = $this->fetchTable('Productos');
+        $this->Categorias = $this->fetchTable('Categorias');
     }
 
     public function destacados()
     {
-        // Obtenemos los campos esenciales para devolver al frontend
+        // Obtenemos los campos esenciales para devolver al frontend, solo se muestran lso productos añadidos recientemente
         $query = $this->Productos->find()
             ->select(['id', 'nombre', 'descripcion', 'categoria_id', 'precio', 'ruta_imagen', 'creado_en'])
             ->order(['creado_en' => 'DESC']) // <-- ordenar por el campo correcto
             ->limit(6);
 
-        // Ejecutar la query y convertir el resultado a array serializable
-        // En CakePHP 5 -> all() retorna un ResultSet; toArray() es seguro y serializable
         $lista = $query->all()->toArray();
 
         $this->set([
@@ -34,6 +37,26 @@ class ProductosController extends ApiController
 
         $this->viewBuilder()->setOption('serialize', ['status', 'data']);
     }
+
+    public function categoria($idCategoria = null)
+    {
+    if (!$idCategoria) {
+        throw new NotFoundException('Debe enviar una categoría');
+    }
+
+    $productos = $this->Productos->find()
+        ->where(['categoria_id' => $idCategoria])
+        ->select(['id', 'nombre', 'descripcion', 'precio', 'ruta_imagen', 'creado_en'])
+        ->order(['creado_en' => 'DESC'])
+        ->toArray(); // <-- aquí está la clave
+
+    $this->set([
+        'status' => 'success',
+        'data' => $productos
+    ]);
+
+    $this->viewBuilder()->setOption('serialize', ['status', 'data']);
+}
 
 
     // GET /api/productos.json

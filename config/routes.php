@@ -49,21 +49,29 @@ return function (RouteBuilder $routes): void {
         $builder->fallbacks();
     });
 
-    $routes->prefix('Api', function ($routes) {
-        $routes->resources('Productos', [
-            'map' => [
-                'destacados' => [
-                    'action' => 'destacados',
-                    'method' => 'GET',
-                    'path' => 'destacados'
-                ]
-            ]
-        ]);
-    });
+    $routes->prefix('Api', function (RouteBuilder $builder) {
 
-    $routes->prefix('Api', function ($routes) {
-        $routes->setExtensions(['json']);
-        //crea automaticamente las rutas necesarios para los metodo GET, POST, PUT, DELETE
-        $routes->resources('Productos');
-    });
+    $builder->setExtensions(['json']);
+
+    // Rutas personalizadas
+    $builder->connect('/productos/destacados', [
+        'controller' => 'Productos',
+        'action' => 'destacados'
+    ]);
+
+    $builder->connect('/productos/categoria/:id', [
+        'controller' => 'Productos',
+        'action' => 'categoria'
+    ])
+    ->setPass(['id'])
+    ->setPatterns(['id' => '\d+']);
+
+    // Rutas REST automáticas
+    $builder->resources('Productos');
+});
+
+
 };
+
+
+

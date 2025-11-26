@@ -9,38 +9,13 @@
             <section class="categoria">
                 <h2 class="subtitle-productos">Productos Destacados</h2>
                 <div class="carousel">
-                    <button class="btn-left" data-track="carousel-destacados">‹</button>
+                    <button class="btn-left carousel-btn" data-track="carousel-destacados">‹</button>
 
                     <div class="carousel-track" id="carousel-destacados"></div>
 
-                    <button class="btn-right" data-track="carousel-destacados">›</button>
+                    <button class="btn-right carousel-btn" data-track="carousel-destacados">›</button>
                 </div>
             </section>
-
-            <!-- Sección: Arroz -->
-            <section class="categoria">
-                <h2 class="subtitle-productos">Arroz</h2>
-                <div class="carousel">
-                    <button class="btn-left" data-track="carousel-arroz">‹</button>
-
-                    <div class="carousel-track" id="carousel-arroz"></div>
-
-                    <button class="btn-right" data-track="carousel-arroz">›</button>
-                </div>
-            </section>
-
-            <!-- Sección: Menestras -->
-            <section class="categoria">
-                <h2 class="subtitle-productos">Menestras</h2>
-                <div class="carousel">
-                    <button class="btn-left" data-track="carousel-menestras">‹</button>
-
-                    <div class="carousel-track" id="carousel-menestras"></div>
-
-                    <button class="btn-right" data-track="carousel-menestras">›</button>
-                </div>
-            </section>
-
             <!-- Modal universal -->
             <div id="modal-producto" class="modal">
                 <div class="modal-contenido">

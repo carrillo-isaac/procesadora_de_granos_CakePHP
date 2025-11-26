@@ -5,8 +5,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Crear cada carrusel:
     crearCarrusel("destacados", "carousel-destacados");
-    crearCarrusel("arroz", "carousel-arroz");
-    crearCarrusel("menestras", "carousel-menestras");
 });
 
 /* =======================================================
