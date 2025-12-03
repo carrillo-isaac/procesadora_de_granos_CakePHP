@@ -12,7 +12,9 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
         <!-- Slides -->
         <div class="slides">
             <div class="slide s1">
-                <img src="/img/slider/Espiga-slider.jpg" alt="Arrozales Miró">
+                <?= $this->Html->image('slider/Espiga-slider.jpg', [
+                    'alt' => 'Arrozales Miró'
+                ]) ?>
                 <div class="caption">
                     <h1>Calidad y tradición en cada grano — Bienvenido a Miró</h1>
                     <p>Miró acompaña a las familias panameñas con arroz y menestras de la más alta calidad.</p>
@@ -20,7 +22,9 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
             </div>
 
             <div class="slide s2">
-                <img src="/img/slider/miro-arroz-slider.webp" alt="Campo de Arroz">
+                <?= $this->Html->image('slider/miro-arroz-slider.webp', [
+                    'alt' => 'Campo de Arroz'
+                ]) ?>
                 <div class="caption">
                     <h2>De nuestros campos a tu mesa</h2>
                     <p>Arroz y menestras cultivados con pasión y procesos sostenibles.</p>
@@ -28,7 +32,9 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
             </div>
 
             <div class="slide s3">
-                <img src="/img/slider/procesadora-slider.webp" alt="Proceso de selección">
+                <?= $this->Html->image('slider/procesadora-slider.webp', [
+                    'alt' => 'Proceso de selección'
+                ]) ?>
                 <div class="caption">
                     <h2>Procesos modernos, sabor tradicional</h2>
                     <p>Seleccionamos solo los mejores granos para tu familia.</p>
@@ -55,7 +61,9 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
     <article class="producto">
         <h3>Arroz Especial</h3>
         <figure>
-            <img src="/img/products/arroz 2kg.webp" alt="Arroz Especial">
+            <?= $this->Html->image('products/arroz 2kg.webp', [
+                'alt' => 'Arroz Especial'
+            ]) ?>
             <figcaption>Arroz especial 2KG</figcaption>
         </figure>
         <p>Arroz de primera calidad, cultivado en Chiriquí con procesos modernos de selección y empaque.</p>
@@ -67,7 +75,9 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
     <article class="producto">
         <h3>Frijoles Chiricanos</h3>
         <figure>
-            <img src="/img/products/frijol_chiricano.webp" alt="Frijoles Chiricanos">
+            <?= $this->Html->image('products/frijol_chiricano.webp', [
+                'alt' => 'Frijoles Chiricanos'
+            ]) ?>
             <figcaption>Frijoles Chiricanos 0.45KG</figcaption>
         </figure>
         <p>Disfruta del auténtico sabor de los Frijoles Chiricanos. Perfectos para sopas, guisos y acompañamientos tradicionales.</p>
@@ -79,7 +89,9 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
     <article class="producto">
         <h3>Porotos Rojos</h3>
         <figure>
-            <img src="/img/products/porotos_Rojos.webp" alt="Porotos Rojos">
+            <?= $this->Html->image('products/porotos_Rojos.webp', [
+                'alt' => 'Porotos Rojos'
+            ]) ?>
             <figcaption>Porotos Rojos 0.45KG</figcaption>
         </figure>
         <p>Arroz de primera calidad, cultivado en Chiriquí con procesos modernos de selección y empaque.</p>
@@ -92,12 +104,39 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
 <section class="gallery">
     <h2>Galería</h2>
 
-    <figure><img src="/img/gallery/image1.jpg" alt="Campo de Trigo Miró"></figure>
-    <figure><img src="/img/gallery/image2.webp" alt="Receta de comida"></figure>
-    <figure><img src="/img/gallery/image3.jpg" alt="Trigo"></figure>
-    <figure><img src="/img/gallery/image4.jpg" alt="Grupo Ejecutivo Miró"></figure>
-    <figure><img src="/img/gallery/image5.jpeg" alt="Productos Granos Miró"></figure>
-    <figure><img src="/img/gallery/image6.webp" alt="Revisión ejecutiva"></figure>
+    <figure>
+        <?= $this->Html->image('gallery/image1.jpg', [
+            'alt' => 'Campo de Trigo Miró'
+        ]) ?>
+    </figure>
+    <figure>
+        <?= $this->Html->image('gallery/image2.webp', [
+            'alt' => 'Receta de comida'
+        ]) ?>
+    </figure>
+    <figure>
+        <?= $this->Html->image('gallery/image3.jpg', [
+            'alt' => 'Trigo'
+        ]) ?>
+    </figure>
+    <figure>
+        <?= $this->Html->image('gallery/image4.jpg', [
+            'alt' => 'Grupo Ejecutivo Miró'
+        ]) ?>
+    </figure>
+    <figure>
+        <?= $this->Html->image('gallery/image5.jpeg', [
+            'alt' => 'Productos Granos Miró'
+        ]) ?>
+    </figure>
+    <figure>
+        <?= $this->Html->image('gallery/image6.webp', [
+            'alt' => 'Revisión ejecutiva'
+        ]) ?>
+    </figure>
 </section>
 
-<?= $this->Html->script('carrousel.js') ?>
+<!-- ============ FOOTER ============ -->
+
+
+<?= $this->Html->script('carrousel') ?>
