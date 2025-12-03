@@ -11,6 +11,7 @@
             <!-- Carrito -->
             <li>
                 <a href="/pages/carrito" class="icon-btn carrito">
+                    Carrito
                     <i class="bi bi-cart3"></i>
 
                     <?php 
@@ -26,12 +27,15 @@
 
             <!-- Icono usuario -->
             <li>
+                
                 <?php if (isset($_SESSION['Auth']['User'])): ?>
                     <a href="/usuarios/logout" class="icon-btn logout">
+                        LOGOUT
                         <i class="bi bi-box-arrow-right"></i>
                     </a>
                 <?php else: ?>
                     <a href="/usuarios/login" class="icon-btn login">
+                        LOGIN
                         <i class="bi bi-person-circle"></i>
                     </a>
                 <?php endif; ?>
