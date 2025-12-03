@@ -10,7 +10,7 @@
 
             <!-- Carrito -->
             <li>
-                <a href="/carrito" class="icon-btn carrito">
+                <a href="/pages/carrito" class="icon-btn carrito">
                     <i class="bi bi-cart3"></i>
 
                     <?php 
