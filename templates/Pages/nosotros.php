@@ -11,7 +11,7 @@
 <body>
     <main class="contenido-nosotros">
 
-        
+
         <section class="fila">
             <div class="texto">
                 <h1>¿Quiénes somos?</h1>
@@ -20,32 +20,32 @@
                     de granos básicos.
                     <br><br>
                     Creemos firmemente en la importancia de la innovación y la sostenibilidad. Por eso,
-                    nos esforzamos por adoptar prácticas agrícolas que mejoran la productividad mientras 
+                    nos esforzamos por adoptar prácticas agrícolas que mejoran la productividad mientras
                     protegen nuestro entorno natural.
                 </p>
             </div>
             <div class="imagen">
-                <img src="/img/nosotros/imagen1.jpg" alt="Campo de arroz">
+                <img src="/img/nosotros/imagen1.png" alt="Campo de arroz">
             </div>
         </section>
 
-        
+
         <section class="fila reverse">
             <div class="texto">
                 <h2>Nuestra Historia</h2>
                 <p>
-                    La historia de Arroz Miró se remonta a más de 50 años de experiencia en la industria, 
-                    donde la calidad no es solo una promesa, sino una tradición.  
-                    La empresa se enfoca en innovación, sostenibilidad y excelencia, 
+                    La historia de Arroz Miró se remonta a más de 50 años de experiencia en la industria,
+                    donde la calidad no es solo una promesa, sino una tradición.
+                    La empresa se enfoca en innovación, sostenibilidad y excelencia,
                     convirtiéndose en la marca preferida por los consumidores panameños.
                 </p>
             </div>
             <div class="imagen">
-                <img src="/img/nosotros/imagen2.jpg" alt="Granos en la mano">
+                <img src="/img/nosotros/imagen2.png" alt="Granos en la mano">
             </div>
         </section>
 
-        
+
         <section class="fila">
             <div class="texto">
                 <h2>Misión</h2>
@@ -59,21 +59,21 @@
             </div>
         </section>
 
-        
+
         <section class="fila reverse">
             <div class="texto">
                 <h2>Visión</h2>
                 <p>
-                    Convertirnos en la marca de alimentos preferida por los clientes, siendo reconocidos por 
+                    Convertirnos en la marca de alimentos preferida por los clientes, siendo reconocidos por
                     calidad, servicio y ética de trabajo. Comprometidos con el medio ambiente y el desarrollo del país.
                 </p>
             </div>
             <div class="imagen">
-                <img src="/img/nosotros/imagen4.jpg" alt="Planta creciendo">
+                <img src="/img/nosotros/imagen4.png" alt="Planta creciendo">
             </div>
         </section>
 
-        
+
         <section class="fila">
             <div class="texto">
                 <h2>Valores Corporativos</h2>
@@ -86,11 +86,9 @@
                 </ul>
             </div>
             <div class="imagen">
-                <img src="/img/nosotros/imagen5.jpg" alt="Cosecha">
+                <img src="/img/nosotros/imagen5.png" alt="Cosecha">
             </div>
         </section>
-
-       
         <section class="fila reverse">
             <div class="texto">
                 <h2>Compromiso con Panamá</h2>
@@ -99,11 +97,12 @@
                 </p>
             </div>
             <div class="imagen">
-                <img src="/img/nosotros/imagen6.jpg" alt="Productores">
+                <img src="/img/nosotros/imagen6.png" alt="Productores">
             </div>
         </section>
 
     </main>
 
 </body>
+
 </html>
