@@ -7,7 +7,7 @@
     <title><?= $this->fetch('title') ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-    <?= $this->Html->css(['style', 'nosotros', 'modal', 'header','carrusel-productos','footer']) ?>
+    <?= $this->Html->css(['style', 'nosotros', 'modal', 'header','footer','galeria']) ?>
     <?= $this->fetch('/css') ?>
 </head>
 
