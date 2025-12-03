@@ -37,6 +37,47 @@ class ProductosController extends ApiController
 
         $this->viewBuilder()->setOption('serialize', ['status', 'data']);
     }
+    
+    // prueba para producto destacado
+    public function destacadosId($idCategoria = null)
+    {
+        if (!$idCategoria) {
+        throw new NotFoundException('Debe enviar una categoría');
+    }
+        // Obtenemos los campos esenciales para devolver al frontend, solo se muestran lso productos añadidos recientemente
+        $query = $this->Productos->find()
+            ->where(['categoria_id' => $idCategoria])
+            ->select(['id', 'nombre', 'descripcion', 'precio', 'ruta_imagen', 'creado_en'])
+            ->order(['creado_en' => 'DESC'])
+            ->toArray(); // <-- aquí está la clave
+
+        $lista = $query;
+
+        $this->set([
+            'status' => 'success',
+            'data' => $lista
+        ]);
+
+        $this->viewBuilder()->setOption('serialize', ['status', 'data']);
+    }
+
+
+    public function mostrar()
+    {
+        // Obtenemos los campos esenciales para devolver al frontend, solo se muestran lso productos añadidos recientemente
+        $query = $this->Productos->find()
+            ->select(['id', 'nombre', 'descripcion', 'categoria_id', 'precio', 'ruta_imagen', 'creado_en'])
+            ->order(['creado_en' => 'ASC']); // <-- ordenar por el campo correcto
+
+        $lista = $query->all()->toArray();
+
+        $this->set([
+            'status' => 'success',
+            'data' => $lista
+        ]);
+
+        $this->viewBuilder()->setOption('serialize', ['status', 'data']);
+    }
 
     public function categoria($idCategoria = null)
     {

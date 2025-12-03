@@ -58,6 +58,17 @@ return function (RouteBuilder $routes): void {
         'controller' => 'Productos',
         'action' => 'destacados'
     ]);
+    $builder->connect('/productos/destacados/:id', [
+        'controller' => 'Productos',
+        'action' => 'destacadosId'
+    ])
+    ->setPass(['id'])
+    ->setPatterns(['id' => '\d+']);
+
+    $builder->connect('/productos/mostrar', [
+        'controller' => 'Productos',
+        'action' => 'mostrar'
+    ]);
 
     $builder->connect('/productos/categoria/:id', [
         'controller' => 'Productos',

@@ -5,6 +5,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Crear cada carrusel:
     crearCarrusel("destacados", "carousel-destacados");
+    listaProductos("mostrar","contenedor-productos")
 });
 
 /* =======================================================
@@ -12,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
    ======================================================= */
 async function crearCarrusel(endpoint, trackId) {
     const track = document.getElementById(trackId);
-
     if (!track) {
         console.error(`Error: No existe el track '${trackId}'`);
         return;
@@ -22,13 +22,27 @@ async function crearCarrusel(endpoint, trackId) {
         const response = await fetch(`http://localhost:8765/api/productos/${endpoint}`);
         const json = await response.json();
         const productos = json.data;
-
         generarCards(productos, track);
     } catch (error) {
         console.error(`Error cargando productos de ${endpoint}:`, error);
     }
 }
+async function listaProductos(endpoint, trackId) {
+    const track = document.getElementById(trackId);
+    if (!track) {
+        console.error(`Error: No existe el track '${trackId}'`);
+        return;
+    }
 
+    try {
+        const response = await fetch(`http://localhost:8765/api/productos/${endpoint}`);
+        const json = await response.json();
+        const productos = json.data;
+        generarCards(productos, track);
+    } catch (error) {
+        console.error(`Error cargando productos de ${endpoint}:`, error);
+    }
+}
 /* =======================================================
     GENERAR CARDS DINÁMICAMENTE
    ======================================================= */
@@ -59,6 +73,27 @@ function generarCards(productos, track) {
         track.appendChild(card);
     });
 }
+
+function agregarProductos(producto){
+    productos.forEach((producto) => {
+        const card = document.createElement("div");
+        card.classList.add("producto-card");
+
+        const imageUrl = `http://localhost:8765${producto.ruta_imagen}`;
+
+        card.innerHTML = `
+            <figure class="producto-figure">
+                <img src="${imageUrl}" alt="${producto.nombre}">
+                <figcaption class="producto-nombre">${producto.nombre}</figcaption>
+            </figure>
+
+            <p class="producto-precio"><strong>$${producto.precio}</strong></p>
+
+            <button class="btn-agregar-carrito">Agregar al carrito</button>
+        `;
+})
+}
+
 
 /* =======================================================
     BOTONES UNIVERSALES PARA TODOS LOS CARRUSELES

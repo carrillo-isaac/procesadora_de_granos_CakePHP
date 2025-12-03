@@ -16,6 +16,14 @@
                     <button class="btn-right carousel-btn" data-track="carousel-destacados">›</button>
                 </div>
             </section>
+            <!-- Agregar todos los productos -->
+            <section class="lista-productos">
+            <h2>lista de productos</h2>
+                <div id="contenedor-productos" data-track="contenedor-productos">
+                    
+                </div>
+            </section>
+
             <!-- Modal universal -->
             <div id="modal-producto" class="modal">
                 <div class="modal-contenido">

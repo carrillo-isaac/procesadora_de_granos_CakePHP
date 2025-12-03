@@ -67,6 +67,25 @@
     color: white;
 }
 
+/* ============================
+        CONTENEDOR DE PRODUCTOS
+   ======================= */
+.lista-productos{
+    width: 100%;
+}
+#contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 2px;
+}
+#contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
 /* =======================
         PRODUCTOS
    ======================= */
@@ -75,7 +94,7 @@
     max-width: 260px;
     background: white;
     border-radius: 12px;
-    padding: 1.4rem;
+    padding: 1.0rem;
     box-shadow: 0 4px 9px rgba(46, 74, 42, 0.15);
     border: 1px solid #e5ebdf;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -96,7 +115,7 @@
 }
 
 .producto-figure img {
-    width: 100%;
+    width: 95%;
     height: 165px;
     object-fit: contain !important;
     background-color: white;
