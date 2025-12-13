@@ -16,7 +16,7 @@
             <h4 style="color: #7f8c8d; margin-bottom: 10px;">Tu carrito está vacío</h4>
             <p style="color: #95a5a6; margin-bottom: 30px;">
                 ¡Agrega productos para comenzar tu compra!
-            </p>
+            </p>w
             <?= $this->Html->link(
                 '<i class="bi bi-arrow-left"></i> Ver productos',
                 ['controller' => 'Productos', 'action' => 'index'],
