@@ -14,10 +14,10 @@
                     Carrito
                     <i class="bi bi-cart3"></i>
 
-                    <?php 
-                        $carritoCount = isset($_SESSION['Carrito'])
-                            ? array_sum(array_column($_SESSION['Carrito'], 'cantidad'))
-                            : 0;
+                    <?php
+                    $carritoCount = isset($_SESSION['Carrito'])
+                        ? array_sum(array_column($_SESSION['Carrito'], 'cantidad'))
+                        : 0;
                     ?>
                     <?php if ($carritoCount > 0): ?>
                         <span class="badge"><?= $carritoCount ?></span>
@@ -27,15 +27,14 @@
 
             <!-- Icono usuario -->
             <li>
-                
-                <?php if (isset($_SESSION['Auth']['User'])): ?>
-                    <a href="/usuarios/logout" class="icon-btn logout">
-                        LOGOUT
+                <?php if ($this->request->getAttribute('identity')): ?>
+                    <a href="/logout" class="icon-btn logout">
+                        Cerrar sesión
                         <i class="bi bi-box-arrow-right"></i>
                     </a>
                 <?php else: ?>
                     <a href="/login" class="icon-btn login">
-                        LOGIN
+                        Login
                         <i class="bi bi-person-circle"></i>
                     </a>
                 <?php endif; ?>
