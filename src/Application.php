@@ -111,10 +111,14 @@ implements AuthenticationServiceProviderInterface
     $service = new AuthenticationService();
 
     // Redirección cuando NO hay sesión
+    // $prefix = $request->getAttribute('params')['prefix'] ?? null;
+
+
     $service->setConfig([
         'unauthenticatedRedirect' => '/login',
         'queryParam' => 'redirect',
     ]);
+
 
     // IDENTIFICADOR (Usuarios)
     $service->loadIdentifier('Authentication.Password', [
@@ -139,6 +143,4 @@ implements AuthenticationServiceProviderInterface
 
     return $service;
 }
-
-
 }
