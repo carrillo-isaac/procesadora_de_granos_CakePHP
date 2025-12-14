@@ -27,7 +27,7 @@ return function (RouteBuilder $routes): void {
 
     // 2. Ruta antigua de LOGIN: Redirige /usuarios/login al PagesController
     // Esto previene el error 'MissingActionException' en UsuariosController
-    $routes->connect('/usuarios/login', ['controller' => 'Pages', 'action' => 'login']);
+    $routes->connect('/login', ['controller' => 'Pages', 'action' => 'login']);
 
     // 3. Ruta de LOGOUT: Redirige /logout al PagesController
     $routes->connect('/logout', ['controller' => 'Pages', 'action' => 'logout']);

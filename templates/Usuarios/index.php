@@ -21,7 +21,7 @@ $this->start('tbody'); ?>
     <tr>
         <td><?= $this->Number->format($usuario->id) ?></td>
         <td><?= h($usuario->nombre) ?></td>
-        <td><?= h($usuario->correo) ?></td>
+        <td><?= h($usuario->email) ?></td>
         <td><?= h($usuario->rol) ?></td>
         <td><?= h($usuario->creado_en) ?></td>
         <td>

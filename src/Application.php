@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -14,6 +15,13 @@ use Cake\Http\MiddlewareQueue;
 use Cake\ORM\Locator\TableLocator;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
+use Authentication\AuthenticationService;
+use Authentication\AuthenticationServiceInterface;
+use Authentication\AuthenticationServiceProviderInterface;
+use Authentication\Middleware\AuthenticationMiddleware;
+use Authentication\Identifier\IdentifierInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
 
 /**
  * Application setup class.
@@ -24,6 +32,7 @@ use Cake\Routing\Middleware\RoutingMiddleware;
  * @extends \Cake\Http\BaseApplication<\App\Application>
  */
 class Application extends BaseApplication
+implements AuthenticationServiceProviderInterface
 {
     /**
      * Load all the application configuration and bootstrap logic.
@@ -47,40 +56,43 @@ class Application extends BaseApplication
      * @param \Cake\Http\MiddlewareQueue $middlewareQueue The middleware queue to setup.
      * @return \Cake\Http\MiddlewareQueue The updated middleware queue.
      */
-   public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
-{
-    // Error handler
-    $middlewareQueue->add(new ErrorHandlerMiddleware(Configure::read('Error'), $this));
+    public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
+    {
+        // Error handler
+        $middlewareQueue->add(new ErrorHandlerMiddleware(Configure::read('Error'), $this));
 
-    // Serve assets
-    $middlewareQueue->add(new AssetMiddleware([
-        'cacheTime' => Configure::read('Asset.cacheTime'),
-    ]));
+        // Serve assets
+        $middlewareQueue->add(new AssetMiddleware([
+            'cacheTime' => Configure::read('Asset.cacheTime'),
+        ]));
 
-    // Routing
-    $middlewareQueue->add(new RoutingMiddleware($this));
+        // Routing
+        $middlewareQueue->add(new RoutingMiddleware($this));
 
-    // Body Parser para JSON (muy importante para APIs)
-    $middlewareQueue->add(new BodyParserMiddleware());
+        // Authentication
+        $middlewareQueue->add(new AuthenticationMiddleware($this));
 
-    // -------------------------
-    // CSRF con excepción para API
-    // -------------------------
+        // Body Parser para JSON (muy importante para APIs)
+        $middlewareQueue->add(new BodyParserMiddleware());
 
-    $csrf = new CsrfProtectionMiddleware([
-        'httponly' => true,
-    ]);
+        // -------------------------
+        // CSRF con excepción para API
+        // -------------------------
 
-    // Esta línea DESACTIVA el CSRF solo para prefijo "Api"
-    $csrf->skipCheckCallback(function ($request) {
-        return $request->getParam('prefix') === 'Api';
-    });
+        $csrf = new CsrfProtectionMiddleware([
+            'httponly' => true,
+        ]);
 
-    // Agregamos el middleware csrf corregido
-    $middlewareQueue->add($csrf);
+        // Esta línea DESACTIVA el CSRF solo para prefijo "Api"
+        $csrf->skipCheckCallback(function ($request) {
+            return $request->getParam('prefix') === 'Api';
+        });
 
-    return $middlewareQueue;
-}
+        // Agregamos el middleware csrf corregido
+        $middlewareQueue->add($csrf);
+
+        return $middlewareQueue;
+    }
 
     /**
      * Register application container services.
@@ -89,7 +101,44 @@ class Application extends BaseApplication
      * @return void
      * @link https://book.cakephp.org/5/en/development/dependency-injection.html#dependency-injection
      */
-    public function services(ContainerInterface $container): void
-    {
-    }
+    public function services(ContainerInterface $container): void {}
+
+    // tomar el inicio de sesión de la vista html
+    public function getAuthenticationService(
+    ServerRequestInterface $request
+): AuthenticationServiceInterface {
+
+    $service = new AuthenticationService();
+
+    // Redirección cuando NO hay sesión
+    $service->setConfig([
+        'unauthenticatedRedirect' => '/login',
+        'queryParam' => 'redirect',
+    ]);
+
+    // IDENTIFICADOR (Usuarios)
+    $service->loadIdentifier('Authentication.Password', [
+        'fields' => [
+            'username' => 'email',
+            'password' => 'password',
+        ],
+        'resolver' => [
+            'className' => 'Authentication.Orm',
+            'userModel' => 'Usuarios',
+        ],
+    ]);
+    $service->loadAuthenticator('Authentication.Session');
+    // AUTHENTICATOR FORM
+    $service->loadAuthenticator('Authentication.Form', [
+        'fields' => [
+            'username' => 'email',
+            'password' => 'password',
+        ],
+        'loginUrl' => '/login',
+    ]);
+
+    return $service;
+}
+
+
 }

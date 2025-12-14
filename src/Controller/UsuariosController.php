@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -10,33 +11,27 @@ namespace App\Controller;
  */
 class UsuariosController extends AppController
 {
-    // ⚠️ EL MÉTODO login() HA SIDO ELIMINADO/MOVIDO A PagesController.php
-    
-    // ⚠️ EL MÉTODO logout() HA SIDO ELIMINADO/MOVIDO A PagesController.php
-
     /**
      * Register method (Mantener o mover según se desee)
      */
     public function register()
     {
         $usuario = $this->Usuarios->newEmptyEntity();
+
         if ($this->request->is('post')) {
-            $data = $this->request->getData();
-            
-            // Hashear la contraseña
-            if (!empty($data['password'])) {
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-            }
-            
-            $usuario = $this->Usuarios->patchEntity($usuario, $data);
+            $usuario = $this->Usuarios->patchEntity($usuario, $this->request->getData());
+
             if ($this->Usuarios->save($usuario)) {
-                $this->Flash->success(__('Registro exitoso. Ya puedes iniciar sesión.'));
-                return $this->redirect(['action' => 'login']); // Asegúrate de que esta ruta ahora apunte a /login
+                $this->Flash->success('Registro exitoso. Ya puedes iniciar sesión.');
+                return $this->redirect('/login');
             }
-            $this->Flash->error(__('No se pudo completar el registro. Intenta de nuevo.'));
+
+            $this->Flash->error('No se pudo completar el registro.');
         }
+
         $this->set(compact('usuario'));
     }
+
 
     /**
      * Index method
@@ -49,25 +44,82 @@ class UsuariosController extends AppController
     }
 
     // ... (El resto de métodos: view, add, edit, delete se mantienen iguales)
-    
+
     public function view($id = null)
     {
         $usuario = $this->Usuarios->get($id, contain: ['Carrito', 'Facturas']);
         $this->set(compact('usuario'));
     }
-    
+
     public function add()
     {
-        // ... contenido de add() ...
+        $usuario = $this->Usuarios->newEmptyEntity();
+
+        if ($this->request->is('post')) {
+            $usuario = $this->Usuarios->patchEntity(
+                $usuario,
+                $this->request->getData()
+            );
+
+            if ($this->Usuarios->save($usuario)) {
+                $this->Flash->success(__('Usuario creado correctamente.'));
+                return $this->redirect(['action' => 'index']);
+            }
+
+            $this->Flash->error(__('No se pudo guardar el usuario.'));
+        }
+
+        $this->set(compact('usuario'));
     }
-    
+
+
     public function edit($id = null)
     {
-        // ... contenido de edit() ...
+        $usuario = $this->Usuarios->get($id);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $usuario = $this->Usuarios->patchEntity(
+                $usuario,
+                $this->request->getData()
+            );
+
+            if ($this->Usuarios->save($usuario)) {
+                $this->Flash->success(__('Usuario actualizado correctamente.'));
+                return $this->redirect(['action' => 'index']);
+            }
+
+            $this->Flash->error(__('No se pudo actualizar el usuario.'));
+        }
+
+        $this->set(compact('usuario'));
     }
-    
+
+
     public function delete($id = null)
     {
-        // ... contenido de delete() ...
+        $this->request->allowMethod(['post', 'delete']);
+
+        $usuario = $this->Usuarios->get($id);
+
+        if ($this->Usuarios->delete($usuario)) {
+            $this->Flash->success(__('Usuario eliminado correctamente.'));
+        } else {
+            $this->Flash->error(__('No se pudo eliminar el usuario.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+
+        $this->Authentication->addUnauthenticatedActions([
+            'add',
+            'view',
+            'edit',
+            'register'
+        ]);
     }
 }

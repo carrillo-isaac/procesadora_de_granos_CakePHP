@@ -23,8 +23,8 @@
                 <legend><?= __('Edit Usuario') ?></legend>
                 <?php
                     echo $this->Form->control('nombre');
-                    echo $this->Form->control('contrasena');
-                    echo $this->Form->control('correo');
+                    echo $this->Form->control('password');
+                    echo $this->Form->control('email');
                     echo $this->Form->control('rol');
                     echo $this->Form->control('creado_en');
                 ?>

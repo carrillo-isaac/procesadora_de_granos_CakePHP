@@ -34,7 +34,7 @@
                         <i class="bi bi-box-arrow-right"></i>
                     </a>
                 <?php else: ?>
-                    <a href="/usuarios/login" class="icon-btn login">
+                    <a href="/login" class="icon-btn login">
                         LOGIN
                         <i class="bi bi-person-circle"></i>
                     </a>

@@ -45,6 +45,16 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
 </section>
 
 <section class="nosotros_seccion">
+    <?php if ($this->Identity->isLoggedIn()): ?>
+    <p>Usuario logueado</p>
+    <pre><?= h(print_r($this->Identity->get(), true)) ?></pre>
+<?php else: ?>
+    <p>NO hay sesión</p>
+<?php endif; ?>
+
+
+
+
     <h2>Nosotros</h2>
     <p>
         En Arroz Miró trabajamos con pasión para ofrecer a las familias panameñas arroz y granos

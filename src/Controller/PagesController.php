@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -8,6 +9,7 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\Event\EventInterface;
 // Se elimina la importación del modelo Usuarios (no necesaria al usar fetchTable)
 
 /**
@@ -19,47 +21,48 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
-    // Se elimina el método initialize() porque ya no se necesita $this->loadModel()
-    
+
     /**
-     * Login method (CORREGIDO para CakePHP 5)
+     * Login method 
      */
     public function login()
     {
-        if ($this->request->is('post')) {
-            $email = $this->request->getData('email');
-            $password = $this->request->getData('password');
-            
-            // 🎯 Solución Definitiva: Usar fetchTable para obtener la instancia del modelo.
-            $UsuariosTable = $this->fetchTable('Usuarios');
-            
-            // Buscar el usuario usando la instancia obtenida
-            $usuario = $UsuariosTable->findByEmail($email)->first(); 
-            
-            if ($usuario && password_verify($password, $usuario->password)) {
-                $this->request->getSession()->write('Auth.User', [
-                    'id' => $usuario->id,
-                    'nombre' => $usuario->nombre,
-                    'email' => $usuario->email
-                ]);
-                $this->Flash->success(__('¡Bienvenido {0}!', $usuario->nombre));
-                // Redirección al home
-                return $this->redirect(['controller' => 'Pages', 'action' => 'display', 'home']); 
-            }
-            
-            $this->Flash->error(__('Correo o contraseña incorrectos'));
+        $this->request->allowMethod(['get', 'post']);
+
+        $result = $this->Authentication->getResult();
+
+        if ($result->isValid()) {
+            return $this->redirect([
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ]);
+        }
+
+        if ($this->request->is('post') && !$result->isValid()) {
+            $this->Flash->error('Correo o contraseña incorrectos');
         }
     }
-    
-    /**
-     * Logout method (Añadido)
-     */
+    // Logout method
     public function logout()
     {
-        $this->request->getSession()->delete('Auth.User');
-        $this->Flash->success(__('Has cerrado sesión correctamente'));
-        return $this->redirect(['controller' => 'Pages', 'action' => 'display', 'home']);
+        $this->Authentication->logout();
+        return $this->redirect('/');
     }
+
+    public function beforeFilter(EventInterface $event)
+    {
+        parent::beforeFilter($event);
+
+        //  Acciones públicas
+        $this->Authentication->addUnauthenticatedActions([
+            'login',
+            'display'
+        ]);
+    }
+
+
+
 
     /**
      * Displays a view
@@ -88,6 +91,13 @@ class PagesController extends AppController
         }
         if (!empty($path[1])) {
             $subpage = $path[1];
+        }
+        // verificar si el usuario ya ha iniciado sesión
+        $identity = $this->request->getAttribute('identity');
+
+        if ($identity) {
+            // Usuario logueado
+            $userId = $identity->getIdentifier();
         }
         $this->set(compact('page', 'subpage'));
 
