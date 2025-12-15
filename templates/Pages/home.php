@@ -141,3 +141,4 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
 
 
 <?= $this->Html->script('carrousel') ?>
+<?= $this->Html->script('carrito') ?>
