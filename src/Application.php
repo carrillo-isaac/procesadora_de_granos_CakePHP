@@ -73,7 +73,10 @@ implements AuthenticationServiceProviderInterface
         $middlewareQueue->add(new AuthenticationMiddleware($this));
 
         // Body Parser para JSON (muy importante para APIs)
-        $middlewareQueue->add(new BodyParserMiddleware());
+        $middlewareQueue->add(new BodyParserMiddleware([
+            'json' => true,
+        ]));
+
 
         // -------------------------
         // CSRF con excepción para API
@@ -105,42 +108,42 @@ implements AuthenticationServiceProviderInterface
 
     // tomar el inicio de sesión de la vista html
     public function getAuthenticationService(
-    ServerRequestInterface $request
-): AuthenticationServiceInterface {
+        ServerRequestInterface $request
+    ): AuthenticationServiceInterface {
 
-    $service = new AuthenticationService();
+        $service = new AuthenticationService();
 
-    // Redirección cuando NO hay sesión
-    // $prefix = $request->getAttribute('params')['prefix'] ?? null;
-
-
-    $service->setConfig([
-        'unauthenticatedRedirect' => '/login',
-        'queryParam' => 'redirect',
-    ]);
+        // Redirección cuando NO hay sesión
+        // $prefix = $request->getAttribute('params')['prefix'] ?? null;
 
 
-    // IDENTIFICADOR (Usuarios)
-    $service->loadIdentifier('Authentication.Password', [
-        'fields' => [
-            'username' => 'email',
-            'password' => 'password',
-        ],
-        'resolver' => [
-            'className' => 'Authentication.Orm',
-            'userModel' => 'Usuarios',
-        ],
-    ]);
-    $service->loadAuthenticator('Authentication.Session');
-    // AUTHENTICATOR FORM
-    $service->loadAuthenticator('Authentication.Form', [
-        'fields' => [
-            'username' => 'email',
-            'password' => 'password',
-        ],
-        'loginUrl' => '/login',
-    ]);
+        $service->setConfig([
+            'unauthenticatedRedirect' => '/login',
+            'queryParam' => 'redirect',
+        ]);
 
-    return $service;
-}
+
+        // IDENTIFICADOR (Usuarios)
+        $service->loadIdentifier('Authentication.Password', [
+            'fields' => [
+                'username' => 'email',
+                'password' => 'password',
+            ],
+            'resolver' => [
+                'className' => 'Authentication.Orm',
+                'userModel' => 'Usuarios',
+            ],
+        ]);
+        $service->loadAuthenticator('Authentication.Session');
+        // AUTHENTICATOR FORM
+        $service->loadAuthenticator('Authentication.Form', [
+            'fields' => [
+                'username' => 'email',
+                'password' => 'password',
+            ],
+            'loginUrl' => '/login',
+        ]);
+
+        return $service;
+    }
 }

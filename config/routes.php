@@ -18,6 +18,58 @@ return function (RouteBuilder $routes): void {
 
     $routes->setRouteClass(DashedRoute::class);
 
+    $routes->scope('/api', ['prefix' => 'Api'], function (RouteBuilder $builder) {
+
+        $builder->setExtensions(['json']);
+
+        // -------- PRODUCTOS --------
+        $builder->connect('/productos/destacados', [
+            'controller' => 'Productos',
+            'action' => 'destacados'
+        ]);
+
+        $builder->connect('/productos/destacados/:id', [
+            'controller' => 'Productos',
+            'action' => 'destacadosId'
+        ])
+            ->setPass(['id'])
+            ->setPatterns(['id' => '\d+']);
+
+        // -------- CARRITO --------
+        $builder->connect('/carrito/mas/:id', [
+            'controller' => 'Carrito',
+            'action' => 'mas'
+        ])
+            ->setMethods(['POST'])
+            ->setPass(['id']);
+
+        $builder->connect('/carrito/menos/:id', [
+            'controller' => 'Carrito',
+            'action' => 'menos'
+        ])
+            ->setMethods(['POST'])
+            ->setPass(['id']);
+
+        $builder->connect('/carrito/agregar', [
+            'controller' => 'Carrito',
+            'action' => 'agregar'
+        ])->setMethods(['POST']);
+
+        $builder->connect('/carrito/:id', [
+            'controller' => 'Carrito',
+            'action' => 'delete'
+        ])
+            ->setMethods(['DELETE'])
+            ->setPass(['id']);
+
+        $builder->connect('/carrito', [
+            'controller' => 'Carrito',
+            'action' => 'index'
+        ])->setMethods(['GET']);
+
+        $builder->fallbacks(DashedRoute::class);
+    });
+
     // =========================================================================
     //  RUTAS PERSONALIZADAS AÑADIDAS AQUÍ (FUERA DEL SCOPE PRINCIPAL)
     // =========================================================================
@@ -47,67 +99,5 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/pages/*', 'Pages::display');
 
         $builder->fallbacks();
-    });
-
-    $routes->prefix('Api', function (RouteBuilder $builder) {
-
-        $builder->setExtensions(['json']);
-
-        // Rutas personalizadas
-        $builder->connect('/productos/destacados', [
-            'controller' => 'Productos',
-            'action' => 'destacados'
-        ]);
-        $builder->connect('/productos/destacados/:id', [
-            'controller' => 'Productos',
-            'action' => 'destacadosId'
-        ])
-            ->setPass(['id'])
-            ->setPatterns(['id' => '\d+']);
-
-        $builder->connect('/productos/mostrar', [
-            'controller' => 'Productos',
-            'action' => 'mostrar'
-        ]);
-
-        $builder->connect('/productos/categoria/:id', [
-            'controller' => 'Productos',
-            'action' => 'categoria'
-        ])
-            ->setPass(['id'])
-            ->setPatterns(['id' => '\d+']);
-
-        // ----------- CARRITO -----------
-        // Carrito
-        $builder->connect('/carrito', [
-            'controller' => 'Carrito',
-            'action' => 'index'
-        ])->setMethods(['GET']);
-
-        $builder->connect('/carrito/agregar', [
-            'controller' => 'Carrito',
-            'action' => 'agregar'
-        ])->setMethods(['POST']);
-
-        $builder->connect('/carrito/mas/:id', [
-            'controller' => 'Carrito',
-            'action' => 'mas'
-        ])
-            ->setMethods(['POST'])
-            ->setPass(['id']);
-
-        $builder->connect('/carrito/menos/:id', [
-            'controller' => 'Carrito',
-            'action' => 'menos'
-        ])
-            ->setMethods(['POST'])
-            ->setPass(['id']);
-
-        $builder->connect('/carrito/:id', [
-            'controller' => 'Carrito',
-            'action' => 'delete'
-        ])
-            ->setMethods(['DELETE'])
-            ->setPass(['id']);
     });
 };
