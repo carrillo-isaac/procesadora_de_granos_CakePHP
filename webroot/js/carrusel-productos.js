@@ -5,7 +5,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Crear cada carrusel:
     crearCarrusel("destacados", "carousel-destacados");
-    listaProductos("mostrar","contenedor-productos")
+    listaProductos("mostrar", "contenedor-productos")
 });
 
 /* =======================================================
@@ -61,7 +61,9 @@ function generarCards(productos, track) {
 
             <p class="producto-precio"><strong>$${producto.precio}</strong></p>
 
-            <button class="btn-agregar-carrito">Agregar al carrito</button>
+            <button class="btn-agregar-carrito" data-id="${producto.id}">
+                Agregar al carrito
+            </button>
         `;
 
         // Evitar que el botón abra el modal
@@ -73,8 +75,36 @@ function generarCards(productos, track) {
         track.appendChild(card);
     });
 }
+document.addEventListener("click", async (e) => {
+    if (!e.target.classList.contains("btn-agregar-carrito")) return;
 
-function agregarProductos(producto){
+    const productoId = e.target.dataset.id;
+
+    try {
+        const response = await fetch("/api/carrito/agregar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                producto_id: productoId,
+                cantidad: 1
+            })
+        });
+
+        const json = await response.json();
+
+        if (json.status === "success") {
+            alert("Producto agregado al carrito");
+        }
+
+    } catch (error) {
+        console.error("Error agregando producto:", error);
+    }
+});
+
+
+function agregarProductos(producto) {
     productos.forEach((producto) => {
         const card = document.createElement("div");
         card.classList.add("producto-card");
@@ -91,7 +121,7 @@ function agregarProductos(producto){
 
             <button class="btn-agregar-carrito">Agregar al carrito</button>
         `;
-})
+    })
 }
 
 
