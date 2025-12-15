@@ -12,7 +12,10 @@ class ApiController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-       // Permitir TODAS las acciones del controlador actual
+        // DESACTIVAR CSRF PARA API
+        // $this->getEventManager()->off($this->Csrf);
+
+        // Permitir TODAS las acciones del controlador actual
         $this->Authentication->allowUnauthenticated([
             $this->getRequest()->getParam('action')
         ]);

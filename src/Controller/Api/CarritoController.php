@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller\Api;
@@ -21,8 +22,11 @@ class CarritoController extends ApiController
         $this->Carrito = $this->fetchTable('Carrito');
         $this->Productos = $this->fetchTable('Productos');
 
-        // ❌ NO permitir acceso sin autenticación
-        // (por defecto queda protegido)
+        $session = $this->request->getSession();
+
+        if (!$session->check('carrito')) {
+            $session->write('carrito', []);
+        }
     }
 
     /**
@@ -112,5 +116,77 @@ class CarritoController extends ApiController
         }
 
         $this->viewBuilder()->setOption('serialize', ['status', 'message', 'errors']);
+    }
+    // POST /api/carrito/mas/{id}
+    public function mas($id)
+    {
+        $this->request->allowMethod(['post']);
+
+        $identity = $this->request->getAttribute('identity');
+        if (!$identity) {
+            throw new UnauthorizedException();
+        }
+
+        $item = $this->Carrito->get($id);
+
+        //  Validar que el item pertenezca al usuario
+        if ($item->usuario_id !== $identity->getIdentifier()) {
+            throw new UnauthorizedException();
+        }
+
+        $item->cantidad += 1;
+        $this->Carrito->save($item);
+
+        $this->set(['status' => 'success']);
+        $this->viewBuilder()->setOption('serialize', ['status']);
+    }
+
+
+    // POST /api/carrito/menos/{id}
+    public function menos($id)
+    {
+        $this->request->allowMethod(['post']);
+
+        $identity = $this->request->getAttribute('identity');
+        if (!$identity) {
+            throw new UnauthorizedException();
+        }
+
+        $item = $this->Carrito->get($id);
+
+        if ($item->usuario_id !== $identity->getIdentifier()) {
+            throw new UnauthorizedException();
+        }
+
+        if ($item->cantidad > 1) {
+            $item->cantidad -= 1;
+            $this->Carrito->save($item);
+        }
+
+        $this->set(['status' => 'success']);
+        $this->viewBuilder()->setOption('serialize', ['status']);
+    }
+
+
+    // DELETE /api/carrito/{id}
+    public function delete($id)
+    {
+        $this->request->allowMethod(['delete']);
+
+        $identity = $this->request->getAttribute('identity');
+        if (!$identity) {
+            throw new UnauthorizedException();
+        }
+
+        $item = $this->Carrito->get($id);
+
+        if ($item->usuario_id !== $identity->getIdentifier()) {
+            throw new UnauthorizedException();
+        }
+
+        $this->Carrito->delete($item);
+
+        $this->set(['status' => 'success']);
+        $this->viewBuilder()->setOption('serialize', ['status']);
     }
 }
