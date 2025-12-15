@@ -89,15 +89,41 @@ document.addEventListener("click", async (e) => {
     }
 
     if (e.target.classList.contains("btn-eliminar")) {
-        await fetch(`/api/carrito/${e.target.dataset.id}`, {
-            method: "DELETE"
+
+        const id = e.target.dataset.id;
+
+        const response = await fetch(`/api/carrito/${id}`, {
+            method: "DELETE",
+            credentials: "same-origin",
+            headers: {
+                "Accept": "application/json"
+            }
         });
+
+        if (!response.ok) {
+            console.error("Error eliminando producto");
+            return;
+        }
+
         cargarCarrito();
     }
 
+    // vaciar todo el carrito
+    if (e.target.id === "vaciar-carrito") {
+        const response = await fetch("/api/carrito", {
+            method: "DELETE",
+            credentials: "same-origin",
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+
+        if (!response.ok) {
+            console.error("Error vaciando carrito");
+            return;
+        }
+
+        cargarCarrito();
+    }
 });
-
-
-
-
 

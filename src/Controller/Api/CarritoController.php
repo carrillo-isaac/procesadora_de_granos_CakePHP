@@ -189,4 +189,26 @@ class CarritoController extends ApiController
         $this->set(['status' => 'success']);
         $this->viewBuilder()->setOption('serialize', ['status']);
     }
+    public function vaciar()
+    {
+        $this->request->allowMethod(['delete']);
+
+        $identity = $this->request->getAttribute('identity');
+        if (!$identity) {
+            throw new UnauthorizedException();
+        }
+
+        $usuarioId = $identity->getIdentifier();
+
+        $this->Carrito->deleteAll([
+            'usuario_id' => $usuarioId
+        ]);
+
+        $this->set([
+            'status' => 'success',
+            'message' => 'Carrito vaciado'
+        ]);
+
+        $this->viewBuilder()->setOption('serialize', ['status', 'message']);
+    }
 }

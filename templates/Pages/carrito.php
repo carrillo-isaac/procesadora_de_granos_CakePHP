@@ -47,7 +47,7 @@
             <strong id="carrito-total">$0.00</strong>
 
             <div class="carrito-acciones">
-                <button class="btn-danger" id="vaciar-carrito">
+                <button type="button" class="btn-danger" id="vaciar-carrito">
                     Vaciar carrito
                 </button>
             </div>

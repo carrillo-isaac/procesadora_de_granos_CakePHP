@@ -36,6 +36,15 @@ return function (RouteBuilder $routes): void {
             ->setPatterns(['id' => '\d+']);
 
         // -------- CARRITO --------
+        $builder->delete('/carrito', [
+            'controller' => 'Carrito',
+            'action' => 'vaciar'
+        ]);
+
+
+        $builder->resources('Carrito', [
+            'only' => ['delete']
+        ]);
         $builder->connect('/carrito/mas/:id', [
             'controller' => 'Carrito',
             'action' => 'mas'
@@ -54,13 +63,6 @@ return function (RouteBuilder $routes): void {
             'controller' => 'Carrito',
             'action' => 'agregar'
         ])->setMethods(['POST']);
-
-        $builder->connect('/carrito/:id', [
-            'controller' => 'Carrito',
-            'action' => 'delete'
-        ])
-            ->setMethods(['DELETE'])
-            ->setPass(['id']);
 
         $builder->connect('/carrito', [
             'controller' => 'Carrito',
