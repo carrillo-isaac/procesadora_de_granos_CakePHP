@@ -51,38 +51,63 @@ return function (RouteBuilder $routes): void {
 
     $routes->prefix('Api', function (RouteBuilder $builder) {
 
-    $builder->setExtensions(['json']);
+        $builder->setExtensions(['json']);
 
-    // Rutas personalizadas
-    $builder->connect('/productos/destacados', [
-        'controller' => 'Productos',
-        'action' => 'destacados'
-    ]);
-    $builder->connect('/productos/destacados/:id', [
-        'controller' => 'Productos',
-        'action' => 'destacadosId'
-    ])
-    ->setPass(['id'])
-    ->setPatterns(['id' => '\d+']);
+        // Rutas personalizadas
+        $builder->connect('/productos/destacados', [
+            'controller' => 'Productos',
+            'action' => 'destacados'
+        ]);
+        $builder->connect('/productos/destacados/:id', [
+            'controller' => 'Productos',
+            'action' => 'destacadosId'
+        ])
+            ->setPass(['id'])
+            ->setPatterns(['id' => '\d+']);
 
-    $builder->connect('/productos/mostrar', [
-        'controller' => 'Productos',
-        'action' => 'mostrar'
-    ]);
+        $builder->connect('/productos/mostrar', [
+            'controller' => 'Productos',
+            'action' => 'mostrar'
+        ]);
 
-    $builder->connect('/productos/categoria/:id', [
-        'controller' => 'Productos',
-        'action' => 'categoria'
-    ])
-    ->setPass(['id'])
-    ->setPatterns(['id' => '\d+']);
+        $builder->connect('/productos/categoria/:id', [
+            'controller' => 'Productos',
+            'action' => 'categoria'
+        ])
+            ->setPass(['id'])
+            ->setPatterns(['id' => '\d+']);
 
-    // Rutas REST automáticas
-    $builder->resources('Productos');
-});
+        // ----------- CARRITO -----------
+        // Carrito
+        $builder->connect('/carrito', [
+            'controller' => 'Carrito',
+            'action' => 'index'
+        ])->setMethods(['GET']);
 
+        $builder->connect('/carrito/agregar', [
+            'controller' => 'Carrito',
+            'action' => 'agregar'
+        ])->setMethods(['POST']);
 
+        $builder->connect('/carrito/mas/:id', [
+            'controller' => 'Carrito',
+            'action' => 'mas'
+        ])
+            ->setMethods(['POST'])
+            ->setPass(['id']);
+
+        $builder->connect('/carrito/menos/:id', [
+            'controller' => 'Carrito',
+            'action' => 'menos'
+        ])
+            ->setMethods(['POST'])
+            ->setPass(['id']);
+
+        $builder->connect('/carrito/:id', [
+            'controller' => 'Carrito',
+            'action' => 'delete'
+        ])
+            ->setMethods(['DELETE'])
+            ->setPass(['id']);
+    });
 };
-
-
-
