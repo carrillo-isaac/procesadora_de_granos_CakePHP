@@ -1,0 +1,90 @@
+:root {
+    --color-principal: #2e4a2a;
+    /* Verde oscuro */
+    --color-secundario: #5b7556;
+    /* Verde medio */
+    --color-acento: #85a661;
+    /* Verde claro */
+    --color-fondo: #fbfbfb;
+    /* Blanco roto */
+    --color-texto: #444;
+    --fuente-principal: Roboto, sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fuente-principal);
+    background: var(--color-fondo);
+    color: var(--color-texto);
+}
+/* Layout */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f1f5f9;
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: 250px;
+    background: #2e4a2a; /* azul oscuro elegante */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-logo {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.sidebar-logo img {
+    max-width: 140px;
+}
+
+/* Menu */
+.sidebar-menu {
+    padding: 20px 0;
+    flex: 1;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sidebar-link i {
+    font-size: 18px;
+}
+
+.sidebar-link:hover {
+    background: rgba(255,255,255,.08);
+    color: #fff;
+}
+
+/* Footer */
+.sidebar-footer {
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.logout {
+    color: #f87171;
+}
+
+.logout:hover {
+    color: #fff;
+}
+
+/* Content */
+.admin-content {
+    flex: 1;
+    padding: 30px;
+}
