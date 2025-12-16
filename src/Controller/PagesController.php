@@ -32,6 +32,17 @@ class PagesController extends AppController
         $result = $this->Authentication->getResult();
 
         if ($result->isValid()) {
+            $identity = $this->request->getAttribute('identity');
+            //si es administrador redirigir al panel de admin
+
+            if ($identity->rol === 'admin') {
+                return $this->redirect([
+                    'prefix' => 'Admin',
+                    'controller' => 'Dashboard',
+                    'action' => 'index'
+                ]);
+            }
+            // cliente normal redirigir a la página de inicio
             return $this->redirect([
                 'controller' => 'Pages',
                 'action' => 'display',

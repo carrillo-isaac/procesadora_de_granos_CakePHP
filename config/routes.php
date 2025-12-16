@@ -18,6 +18,15 @@ return function (RouteBuilder $routes): void {
 
     $routes->setRouteClass(DashedRoute::class);
 
+    $routes->prefix('Admin', function ($routes) {
+        $routes->connect('/', [
+            'controller' => 'Dashboard',
+            'action' => 'index'
+        ]);
+        $routes->fallbacks();
+    });
+
+
     $routes->scope('/api', ['prefix' => 'Api'], function (RouteBuilder $builder) {
 
         $builder->setExtensions(['json']);
