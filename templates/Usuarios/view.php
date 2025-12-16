@@ -24,11 +24,11 @@
                 </tr>
                 <tr>
                     <th><?= __('Contrasena') ?></th>
-                    <td><?= h($usuario->contrasena) ?></td>
+                    <td><?= h($usuario->password) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Correo') ?></th>
-                    <td><?= h($usuario->correo) ?></td>
+                    <td><?= h($usuario->email) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Rol') ?></th>

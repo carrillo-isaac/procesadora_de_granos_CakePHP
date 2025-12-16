@@ -18,6 +18,60 @@ return function (RouteBuilder $routes): void {
 
     $routes->setRouteClass(DashedRoute::class);
 
+    $routes->scope('/api', ['prefix' => 'Api'], function (RouteBuilder $builder) {
+
+        $builder->setExtensions(['json']);
+
+        // -------- PRODUCTOS --------
+        $builder->connect('/productos/destacados', [
+            'controller' => 'Productos',
+            'action' => 'destacados'
+        ]);
+
+        $builder->connect('/productos/destacados/:id', [
+            'controller' => 'Productos',
+            'action' => 'destacadosId'
+        ])
+            ->setPass(['id'])
+            ->setPatterns(['id' => '\d+']);
+
+        // -------- CARRITO --------
+        $builder->delete('/carrito', [
+            'controller' => 'Carrito',
+            'action' => 'vaciar'
+        ]);
+
+
+        $builder->resources('Carrito', [
+            'only' => ['delete']
+        ]);
+        $builder->connect('/carrito/mas/:id', [
+            'controller' => 'Carrito',
+            'action' => 'mas'
+        ])
+            ->setMethods(['POST'])
+            ->setPass(['id']);
+
+        $builder->connect('/carrito/menos/:id', [
+            'controller' => 'Carrito',
+            'action' => 'menos'
+        ])
+            ->setMethods(['POST'])
+            ->setPass(['id']);
+
+        $builder->connect('/carrito/agregar', [
+            'controller' => 'Carrito',
+            'action' => 'agregar'
+        ])->setMethods(['POST']);
+
+        $builder->connect('/carrito', [
+            'controller' => 'Carrito',
+            'action' => 'index'
+        ])->setMethods(['GET']);
+
+        $builder->fallbacks(DashedRoute::class);
+    });
+
     // =========================================================================
     //  RUTAS PERSONALIZADAS AÑADIDAS AQUÍ (FUERA DEL SCOPE PRINCIPAL)
     // =========================================================================
@@ -27,7 +81,7 @@ return function (RouteBuilder $routes): void {
 
     // 2. Ruta antigua de LOGIN: Redirige /usuarios/login al PagesController
     // Esto previene el error 'MissingActionException' en UsuariosController
-    $routes->connect('/usuarios/login', ['controller' => 'Pages', 'action' => 'login']);
+    $routes->connect('/login', ['controller' => 'Pages', 'action' => 'login']);
 
     // 3. Ruta de LOGOUT: Redirige /logout al PagesController
     $routes->connect('/logout', ['controller' => 'Pages', 'action' => 'logout']);
@@ -48,41 +102,4 @@ return function (RouteBuilder $routes): void {
 
         $builder->fallbacks();
     });
-
-    $routes->prefix('Api', function (RouteBuilder $builder) {
-
-    $builder->setExtensions(['json']);
-
-    // Rutas personalizadas
-    $builder->connect('/productos/destacados', [
-        'controller' => 'Productos',
-        'action' => 'destacados'
-    ]);
-    $builder->connect('/productos/destacados/:id', [
-        'controller' => 'Productos',
-        'action' => 'destacadosId'
-    ])
-    ->setPass(['id'])
-    ->setPatterns(['id' => '\d+']);
-
-    $builder->connect('/productos/mostrar', [
-        'controller' => 'Productos',
-        'action' => 'mostrar'
-    ]);
-
-    $builder->connect('/productos/categoria/:id', [
-        'controller' => 'Productos',
-        'action' => 'categoria'
-    ])
-    ->setPass(['id'])
-    ->setPatterns(['id' => '\d+']);
-
-    // Rutas REST automáticas
-    $builder->resources('Productos');
-});
-
-
 };
-
-
-

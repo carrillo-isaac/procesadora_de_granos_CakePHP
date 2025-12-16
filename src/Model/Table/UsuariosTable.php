@@ -66,14 +66,14 @@ class UsuariosTable extends Table
             ->allowEmptyString('nombre');
 
         $validator
-            ->scalar('contrasena')
-            ->maxLength('contrasena', 255)
-            ->allowEmptyString('contrasena');
+            ->scalar('password')
+            ->maxLength('password', 255)
+            ->allowEmptyString('password');
 
         $validator
-            ->scalar('correo')
-            ->maxLength('correo', 150)
-            ->allowEmptyString('correo');
+            ->scalar('email')
+            ->maxLength('email', 255)
+            ->allowEmptyString('email');
 
         $validator
             ->scalar('rol')

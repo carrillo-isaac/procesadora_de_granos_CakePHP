@@ -45,6 +45,7 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
 </section>
 
 <section class="nosotros_seccion">
+
     <h2>Nosotros</h2>
     <p>
         En Arroz Miró trabajamos con pasión para ofrecer a las familias panameñas arroz y granos
@@ -69,7 +70,7 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
         <p>Arroz de primera calidad, cultivado en Chiriquí con procesos modernos de selección y empaque.</p>
         <p><strong>Precio:</strong> $3.19</p>
         <p>Precio/Unidad</p>
-        <a href="/pages/productos_static" class="btn_producto">Ver más</a>
+        <a href="/pages/productos" class="btn_producto">Ver más</a>
     </article>
 
     <article class="producto">
@@ -83,7 +84,7 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
         <p>Disfruta del auténtico sabor de los Frijoles Chiricanos. Perfectos para sopas, guisos y acompañamientos tradicionales.</p>
         <p><strong>Precio:</strong> $1.35</p>
         <p>Precio/Unidad</p>
-        <a href="/pages/productos_static" class="btn_producto">Ver más</a>
+        <a href="/pages/productos" class="btn_producto">Ver más</a>
     </article>
 
     <article class="producto">
@@ -97,7 +98,7 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
         <p>Arroz de primera calidad, cultivado en Chiriquí con procesos modernos de selección y empaque.</p>
         <p><strong>Precio:</strong> $1.55</p>
         <p>Precio/Unidad</p>
-        <a href="/pages/productos_static" class="btn_producto">Ver más</a>
+        <a href="/pages/productos" class="btn_producto">Ver más</a>
     </article>
 </section>
 
@@ -140,3 +141,4 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
 
 
 <?= $this->Html->script('carrousel') ?>
+<?= $this->Html->script('carrito') ?>

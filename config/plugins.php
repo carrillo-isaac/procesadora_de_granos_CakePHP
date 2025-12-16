@@ -9,4 +9,5 @@ return [
         'optional' => true,
     ],
     'Migrations' => [],
+    'Authentication' => [],
 ];
