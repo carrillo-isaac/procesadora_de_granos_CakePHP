@@ -46,11 +46,11 @@
             <select><option>Cliente</option><option>Admin</option></select>
 =======
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Usuario $usuario
- */
+$title = 'Nuevo Usuario';
+
+echo $this->element('admin/page-header', compact('title'));
 ?>
+<<<<<<< HEAD
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -78,3 +78,19 @@
         <button>Guardar Usuario</button>
     </div>
 </div>
+=======
+
+<?php $this->start('content'); ?>
+<div class="card">
+    <?= $this->Form->create($usuario) ?>
+    <?= $this->Form->control('nombre') ?>
+    <?= $this->Form->control('email') ?>
+    <?= $this->Form->control('password') ?>
+    <?= $this->Form->control('rol') ?>
+    <?= $this->Form->button('Guardar', ['class' => 'btn btn-primary']) ?>
+    <?= $this->Form->end() ?>
+</div>
+<?php $this->end(); ?>
+
+<?= $this->element('admin/crud-layout') ?>
+>>>>>>> feature/Admin

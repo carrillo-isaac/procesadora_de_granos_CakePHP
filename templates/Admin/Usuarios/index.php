@@ -1,37 +1,42 @@
 <?php
-// título y botón (puedes pasarlo directo al element)
 $title = 'Usuarios';
-$newButton = $this->Html->link('Nuevo Usuario', ['action' => 'add'], ['class' => 'btn-add']);
 
-// thead
-$this->start('thead'); ?>
-<tr>
-    <th><?= $this->Paginator->sort('id') ?></th>
-    <th><?= $this->Paginator->sort('nombre') ?></th>
-    <th><?= $this->Paginator->sort('correo') ?></th>
-    <th><?= $this->Paginator->sort('rol') ?></th>
-    <th><?= $this->Paginator->sort('creado_en') ?></th>
-    <th>Acciones</th>
-</tr>
-<?php $this->end();
+$actions = [
+    $this->Html->link('Nuevo Usuario', ['action' => 'add'], ['class' => 'btn btn-primary'])
+];
 
-// tbody
-$this->start('tbody'); ?>
-<?php foreach ($usuarios as $usuario): ?>
-    <tr>
-        <td><?= $this->Number->format($usuario->id) ?></td>
-        <td><?= h($usuario->nombre) ?></td>
-        <td><?= h($usuario->email) ?></td>
-        <td><?= h($usuario->rol) ?></td>
-        <td><?= h($usuario->creado_en) ?></td>
-        <td>
-            <?= $this->Html->link('Ver', ['action' => 'view', $usuario->id], ['class' => 'btn-view']) ?>
-            <?= $this->Html->link('Editar', ['action' => 'edit', $usuario->id], ['class' => 'btn-edit']) ?>
-            <?= $this->Form->postLink('Eliminar', ['action' => 'delete', $usuario->id], ['confirm' => "¿Seguro?", 'class' => 'btn-delete']) ?>
-        </td>
-    </tr>
-<?php endforeach; ?>
-<?php $this->end();
+echo $this->element('admin/page-header', compact('title', 'actions'));
+?>
 
-// Llamada al element
-echo $this->element('index_layout', ['title' => $title, 'newButton' => $newButton]);
+<?php $this->start('content'); ?>
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th><?= $this->Paginator->sort('id') ?></th>
+            <th><?= $this->Paginator->sort('nombre') ?></th>
+            <th><?= $this->Paginator->sort('email') ?></th>
+            <th><?= $this->Paginator->sort('rol') ?></th>
+            <th><?= $this->Paginator->sort('creado_en') ?></th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($usuarios as $usuario): ?>
+        <tr>
+            <td><?= $usuario->id ?></td>
+            <td><?= h($usuario->nombre) ?></td>
+            <td><?= h($usuario->email) ?></td>
+            <td><?= h($usuario->rol) ?></td>
+            <td><?= h($usuario->creado_en) ?></td>
+            <td class="actions">
+                <?= $this->Html->link('Ver', ['action' => 'view', $usuario->id]) ?>
+                <?= $this->Html->link('Editar', ['action' => 'edit', $usuario->id]) ?>
+                <?= $this->Form->postLink('Eliminar', ['action' => 'delete', $usuario->id], ['confirm' => '¿Seguro?']) ?>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php $this->end(); ?>
+
+<?= $this->element('admin/crud-layout') ?>
