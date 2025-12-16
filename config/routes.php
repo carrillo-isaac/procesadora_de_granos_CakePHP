@@ -19,6 +19,10 @@ return function (RouteBuilder $routes): void {
     $routes->setRouteClass(DashedRoute::class);
 
     $routes->prefix('Admin', function ($routes) {
+        $routes->connect('/', [
+            'controller' => 'Dashboard',
+            'action' => 'index'
+        ]);
         $routes->fallbacks();
     });
 
