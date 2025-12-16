@@ -56,10 +56,27 @@ class UsuariosController extends AppController
         $this->set(compact('usuario'));
     }
     
-    public function add()
+
+   public function add()
     {
-        // ... contenido de add() ...
+    $usuario = $this->Usuarios->newEmptyEntity();
+    if ($this->request->is('post')) {
+        $data = $this->request->getData();
+        
+        // Encriptar la contraseña antes de guardar
+        if (!empty($data['contrasena'])) {
+            $data['contrasena'] = password_hash($data['contrasena'], PASSWORD_DEFAULT);
+        }
+
+        $usuario = $this->Usuarios->patchEntity($usuario, $data);
+        if ($this->Usuarios->save($usuario)) {
+            $this->Flash->success(__('El usuario ha sido guardado correctamente.'));
+            return $this->redirect(['action' => 'index']);
+        }
+        $this->Flash->error(__('No se pudo guardar el usuario. Por favor, intenta de nuevo.'));
     }
+      $this->set(compact('usuario'));
+       }  
     
     public function edit($id = null)
     {

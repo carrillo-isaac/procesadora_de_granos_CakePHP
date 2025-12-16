@@ -278,3 +278,93 @@ header {
     background-color: #006400;
 }
 
+/* --- ESTILOS PARA EL FORMULARIO DE USUARIOS --- */
+
+/* Contenedor para centrar la tarjeta en la página */
+.usuarios-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: var(--color-fondo);
+}
+
+/* Tarjeta del formulario */
+.usuario-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-top: 6px solid var(--color-principal); /* Usa tu verde oscuro */
+}
+
+.usuario-card h2 {
+    color: var(--color-principal);
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.usuario-card p.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+/* Estilo de los campos de CakePHP */
+.usuario-card .input {
+    margin-bottom: 15px;
+}
+
+.usuario-card label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.usuario-card input, 
+.usuario-card select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.usuario-card input:focus {
+    border-color: var(--color-acento);
+    outline: none;
+}
+
+/* Botón con el estilo de tus productos */
+.btn-miro-form {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-principal);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.btn-miro-form:hover {
+    background-color: var(--color-secundario);
+}
+
+.link-cancelar {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
