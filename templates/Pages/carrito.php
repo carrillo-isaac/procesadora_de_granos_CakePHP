@@ -17,7 +17,7 @@
 
         <?= $this->Html->link(
             'Ver productos',
-            ['controller' => 'Productos', 'action' => 'index'],
+            ['controller' => 'Pages', 'action' => 'display','productos'],
             ['class' => 'btn-primary']
         ) ?>
     </div>

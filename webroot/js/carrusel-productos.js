@@ -83,14 +83,28 @@ document.addEventListener("click", async (e) => {
     try {
         const response = await fetch("/api/carrito/agregar", {
             method: "POST",
+            credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             body: JSON.stringify({
                 producto_id: productoId,
                 cantidad: 1
             })
         });
+
+        // 🔐 NO HAY SESIÓN
+        if (response.status === 401) {
+            alert("Debes iniciar sesión para agregar productos al carrito");
+            return;
+        }
+
+        // ❌ Otro error
+        if (!response.ok) {
+            alert("Ocurrió un error al agregar el producto");
+            return;
+        }
 
         const json = await response.json();
 
@@ -102,6 +116,7 @@ document.addEventListener("click", async (e) => {
         console.error("Error agregando producto:", error);
     }
 });
+
 
 
 function agregarProductos(producto) {
