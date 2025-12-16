@@ -70,7 +70,7 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
         <p>Arroz de primera calidad, cultivado en Chiriquí con procesos modernos de selección y empaque.</p>
         <p><strong>Precio:</strong> $3.19</p>
         <p>Precio/Unidad</p>
-        <a href="/pages/productos_static" class="btn_producto">Ver más</a>
+        <a href="/pages/productos" class="btn_producto">Ver más</a>
     </article>
 
     <article class="producto">
@@ -84,7 +84,7 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
         <p>Disfruta del auténtico sabor de los Frijoles Chiricanos. Perfectos para sopas, guisos y acompañamientos tradicionales.</p>
         <p><strong>Precio:</strong> $1.35</p>
         <p>Precio/Unidad</p>
-        <a href="/pages/productos_static" class="btn_producto">Ver más</a>
+        <a href="/pages/productos" class="btn_producto">Ver más</a>
     </article>
 
     <article class="producto">
@@ -98,7 +98,7 @@ $this->assign('title', 'Arroz Miró - Innovación y Sostenibilidad');
         <p>Arroz de primera calidad, cultivado en Chiriquí con procesos modernos de selección y empaque.</p>
         <p><strong>Precio:</strong> $1.55</p>
         <p>Precio/Unidad</p>
-        <a href="/pages/productos_static" class="btn_producto">Ver más</a>
+        <a href="/pages/productos" class="btn_producto">Ver más</a>
     </article>
 </section>
 
