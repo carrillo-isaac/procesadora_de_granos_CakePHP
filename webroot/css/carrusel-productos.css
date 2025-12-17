@@ -1,0 +1,179 @@
+/*  ============
+    TITULO
+    =============*/
+.title-productos {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #008000;
+}
+
+.subtitle-productos{
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #008000;
+}
+
+/* =======================
+    CONTENEDOR DEL CARRUSEL
+   ======================= */
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 40px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* =======================
+    TRACK DEL CARRUSEL
+   ======================= */
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* =======================
+    BOTONES DEL CARRUSEL
+   ======================= */
+.btn-right,
+.btn-left {
+    border: 2px solid var(--color-principal);
+    background: var(--color-fondo);
+    color: var(--color-principal);
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-weight: bold;
+}
+
+.carousel-btn:hover {
+    background: var(--color-principal);
+    color: white;
+}
+
+/* ============================
+        CONTENEDOR DE PRODUCTOS
+   ======================= */
+.lista-productos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* max-width: 1200px; */
+    margin-inline: auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 2px;
+    width: 100%;
+}
+
+
+/* =======================
+        PRODUCTOS
+   ======================= */
+.producto-card {
+    min-width: 260px;
+    max-width: 260px;
+    background: white;
+    border-radius: 12px;
+    padding: 1.0rem;
+    box-shadow: 0 4px 9px rgba(46, 74, 42, 0.15);
+    border: 1px solid #e5ebdf;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Hover elegante */
+.producto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 7px 15px rgba(46, 74, 42, 0.25);
+}
+
+/* FIGURE */
+.producto-figure {
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.producto-figure img {
+    width: 95%;
+    height: 165px;
+    object-fit: contain !important;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Nombre del producto */
+.producto-nombre {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-top: 0.6rem;
+    color: var(--color-principal);
+}
+
+/* Descripción */
+.producto-descripcion {
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    text-align: left;
+    margin-top: 0.5rem;
+    min-height: 50px;
+}
+
+/* Precio */
+.producto-precio {
+    margin-top: 0.9rem;
+    font-size: 1.15rem;
+    color: var(--color-secundario);
+    font-weight: bold;
+}
+
+/* =======================
+    BOTÓN AGREGAR CARRITO
+   ======================= */
+
+.btn-agregar-carrito {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.7rem 1rem;
+    background-color: var(--color-acento);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.btn-agregar-carrito:hover {
+    background-color: var(--color-secundario);
+    transform: translateY(-2px);
+}
+
+.btn-agregar-carrito:active {
+    transform: scale(0.96);
+}

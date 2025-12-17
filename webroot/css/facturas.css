@@ -1,0 +1,210 @@
+/* ===============================
+   CONTENEDOR GENERAL
+================================ */
+.facturas.content {
+    padding: 30px;
+    background-color: #f4f6f8;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 10px;
+}
+
+/* ===============================
+   TITULOS
+================================ */
+.facturas h1,
+.facturas h2,
+.facturas h3,
+.facturas legend {
+    color: #2e7d32;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* ===============================
+   BOTONES GENERALES
+================================ */
+.facturas .button,
+.facturas button,
+.facturas a.button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.facturas .button:hover,
+.facturas button:hover {
+    background-color: #43a047;
+}
+
+/* ===============================
+   FORMULARIOS (ADD / EDIT)
+================================ */
+.facturas.form fieldset {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.facturas.form input,
+.facturas.form select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+.facturas.form input:focus,
+.facturas.form select:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+/* ===============================
+   TABLAS (INDEX / VIEW)
+================================ */
+.facturas table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.facturas th {
+    background-color: #4caf50;
+    color: #ffffff;
+    padding: 14px 16px;
+    text-align: left;
+}
+
+.facturas td {
+    padding: 13px 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.facturas tr:hover {
+    background-color: #e8f5e9;
+}
+
+/* ===============================
+   LINKS Y ACCIONES
+================================ */
+.facturas a {
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.facturas a:hover {
+    text-decoration: underline;
+}
+
+/* ===============================
+   VISTA VIEW (DETALLE)
+================================ */
+.facturas.view dl {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.facturas.view dt {
+    font-weight: 600;
+    color: #2e7d32;
+    margin-top: 10px;
+}
+
+.facturas.view dd {
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+
+/* ===============================
+   PAGINADOR
+================================ */
+.facturas .paginator {
+    margin-top: 20px;
+}
+
+.facturas .pagination li {
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+    .facturas table,
+    .facturas thead,
+    .facturas tbody,
+    .facturas th,
+    .facturas td,
+    .facturas tr {
+        display: block;
+    }
+
+    .facturas th {
+        display: none;
+    }
+
+    .facturas tr {
+        margin-bottom: 15px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+}
+
+/* ===============================
+   BOTONES DE ACCIÓN
+================================ */
+.facturas .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 6px;
+    transition: all 0.2s ease;
+}
+
+/* Ver */
+.facturas .btn-view {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.facturas .btn-view:hover {
+    background-color: #c8e6c9;
+}
+
+/* Editar */
+.facturas .btn-edit {
+    background-color: #e3f2fd;
+    color: #1565c0;
+}
+
+.facturas .btn-edit:hover {
+    background-color: #bbdefb;
+}
+
+/* Eliminar */
+.facturas .btn-delete {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.facturas .btn-delete:hover {
+    background-color: #ffcdd2;
+}

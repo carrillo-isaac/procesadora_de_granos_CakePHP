@@ -1,0 +1,54 @@
+/* ===============================
+   BOTONES DE ACCIÓN (GLOBAL)
+================================ */
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* GRUPO */
+.actions-group {
+    display: flex;
+    gap: 6px;
+}
+
+/* VER */
+.btn-view {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.btn-view:hover {
+    background-color: #c8e6c9;
+}
+
+/* EDITAR */
+.btn-edit {
+    background-color: #e3f2fd;
+    color: #1565c0;
+}
+
+.btn-edit:hover {
+    background-color: #bbdefb;
+}
+
+/* ELIMINAR */
+.btn-delete {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.btn-delete:hover {
+    background-color: #ffcdd2;
+}
+body {
+    border: 5px solid red !important;
+}
