@@ -5,6 +5,12 @@
  * @var string[]|\Cake\Collection\CollectionInterface $usuarios
  */
 ?>
+<<<<<<< HEAD
+=======
+<?= $this->Html->css('facturas') ?>
+<div class="facturas content edit">
+
+>>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
 <div class="row">
     <aside class="column">
         <div class="side-nav">

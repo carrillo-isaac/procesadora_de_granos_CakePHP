@@ -1,0 +1,272 @@
+/* =============================== */
+/* CATEGORIAS - INDEX              */
+/* =============================== */
+
+.categorias.index.content {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Botón New Category */
+.categorias.index a[href*="/add"] {
+    background-color: #2e8b2d;
+    color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.categorias.index a[href*="/add"]:hover {
+    background-color: #256f24;
+}
+
+/* Tabla */
+.categorias.index table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.categorias.index thead {
+    background-color: #2e8b2d;
+    color: white;
+}
+
+.categorias.index th,
+.categorias.index td {
+    padding: 12px;
+    font-size: 14px;
+}
+
+.categorias.index tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.categorias.index tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Acciones */
+.categorias.index td.actions a {
+    background: #e5e7eb;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    color: #111827;
+    margin-right: 4px;
+}
+
+.categorias.index td.actions a:hover {
+    background: #d1d5db;
+}
+
+/* Delete */
+.categorias.index td.actions a[href*="delete"] {
+    background: #ef4444;
+    color: white;
+}
+
+.categorias.index td.actions a[href*="delete"]:hover {
+    background: #dc2626;
+}
+
+/* =============================== */
+/* CATEGORIAS - FORM               */
+/* =============================== */
+
+.categorias form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.categorias legend {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.categorias label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.categorias input[type="text"],
+.categorias textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.categorias textarea {
+    min-height: 90px;
+}
+
+/* Focus */
+.categorias input:focus,
+.categorias textarea:focus {
+    outline: none;
+    border-color: #2e8b2d;
+    box-shadow: 0 0 0 2px rgba(46,139,45,0.15);
+}
+
+/* Submit */
+.categorias input[type="submit"],
+.categorias button {
+    background-color: #2e8b2d;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.categorias input[type="submit"]:hover {
+    background-color: #256f24;
+}
+
+/* ===================================== */
+/* CATEGORIAS - VIEW (NUEVO DISEÑO)      */
+/* ===================================== */
+
+.categorias.view.content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* ===== ACCIONES ===== */
+.categorias.view .actions {
+    background: #ffffff;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.categorias.view .actions a {
+    background: #2e8b2d;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 6px;
+}
+
+.categorias.view .actions a[href*="delete"] {
+    background: #ef4444;
+}
+
+/* ================================ */
+/* PANEL INFO CATEGORIA             */
+/* ================================ */
+
+.categorias.view table:first-of-type,
+.categorias.view .text {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* Título */
+.categorias.view h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Tabla info */
+.categorias.view table:first-of-type {
+    border-collapse: collapse;
+}
+
+.categorias.view table:first-of-type th {
+    width: 160px;
+    font-weight: 600;
+    color: #374151;
+    padding: 10px 0;
+    text-align: left;
+}
+
+.categorias.view table:first-of-type td {
+    padding: 10px 0;
+    color: #111827;
+}
+
+/* Descripción */
+.categorias.view .text h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.categorias.view .text p {
+    line-height: 1.6;
+    color: #374151;
+}
+
+/* ================================ */
+/* PANEL RELATED PRODUCTS           */
+/* ================================ */
+
+.categorias.view h4 + table {
+    background: #ffffff;
+    padding: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* Header */
+.categorias.view h4 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.categorias.view h4 + table thead {
+    background: #f3f4f6;
+}
+
+.categorias.view h4 + table th,
+.categorias.view h4 + table td {
+    padding: 12px 14px;
+    font-size: 14px;
+}
+
+/* Filas */
+.categorias.view h4 + table tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.categorias.view h4 + table tbody tr:hover {
+    background: #f9fafb;
+}
+
+/* Acciones */
+.categorias.view td.actions a {
+    background: #2e8b2d;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.categorias.view td.actions a[href*="delete"] {
+    background: #ef4444;
+}

@@ -6,6 +6,11 @@
  * @var string[]|\Cake\Collection\CollectionInterface $productos
  */
 ?>
+<<<<<<< HEAD
+=======
+<?= $this->Html->css('facturas') ?>
+
+>>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
 <div class="row">
     <aside class="column">
         <div class="side-nav">

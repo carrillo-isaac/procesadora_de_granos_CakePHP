@@ -54,6 +54,7 @@ class PagesController extends AppController
             $this->Flash->error('Correo o contraseña incorrectos');
         }
     }
+<<<<<<< HEAD
 
     // Register Method
     public function register()
@@ -83,6 +84,8 @@ class PagesController extends AppController
     }
 
 
+=======
+>>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
     // Logout method
     public function logout()
     {
@@ -97,7 +100,10 @@ class PagesController extends AppController
         //  Acciones públicas
         $this->Authentication->addUnauthenticatedActions([
             'login',
+<<<<<<< HEAD
             'register',
+=======
+>>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
             'display'
         ]);
     }

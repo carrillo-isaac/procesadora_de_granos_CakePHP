@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <style>
     
     .usuarios-form-wrapper {
@@ -51,6 +52,9 @@ $title = 'Nuevo Usuario';
 echo $this->element('admin/page-header', compact('title'));
 ?>
 <<<<<<< HEAD
+=======
+
+>>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -93,4 +97,8 @@ echo $this->element('admin/page-header', compact('title'));
 <?php $this->end(); ?>
 
 <?= $this->element('admin/crud-layout') ?>
+<<<<<<< HEAD
 >>>>>>> feature/Admin
+=======
+
+>>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)

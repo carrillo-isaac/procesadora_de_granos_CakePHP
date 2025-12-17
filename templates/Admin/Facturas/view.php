@@ -4,6 +4,12 @@
  * @var \App\Model\Entity\Factura $factura
  */
 ?>
+<<<<<<< HEAD
+=======
+<?= $this->Html->css('facturas') ?>
+<div class="facturas content view">
+
+>>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
 <div class="row">
     <aside class="column">
         <div class="side-nav">
