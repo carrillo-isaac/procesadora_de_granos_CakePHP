@@ -95,13 +95,8 @@ return function (RouteBuilder $routes): void {
     // 3. Ruta de LOGOUT: Redirige /logout al PagesController
     $routes->connect('/logout', ['controller' => 'Pages', 'action' => 'logout']);
 
-<<<<<<< HEAD
-    // 4. Ruta de REGISTER: Redirige a /register en PagesController
-    $routes->connect('/register', ['controller' => 'Pages', 'action' => 'register']);
-=======
     // 4. Ruta de REGISTER: (Asumiendo que Register se quedó en UsuariosController)
     $routes->connect('/register', ['controller' => 'Usuarios', 'action' => 'register']);
->>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
 
     // =========================================================================
     //  FIN DE RUTAS PERSONALIZADAS

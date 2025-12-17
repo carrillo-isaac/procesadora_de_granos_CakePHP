@@ -54,38 +54,6 @@ class PagesController extends AppController
             $this->Flash->error('Correo o contraseña incorrectos');
         }
     }
-<<<<<<< HEAD
-
-    // Register Method
-    public function register()
-    {
-        $this->request->allowMethod(['get', 'post']);
-
-        $usuariosTable = $this->fetchTable('Usuarios');
-
-        $usuario = $usuariosTable->newEmptyEntity();
-
-        if ($this->request->is('post')) {
-            $data = $this->request->getData();
-
-            $data['rol'] = 'cliente';
-
-            $usuario = $usuariosTable->patchEntity($usuario, $data);
-
-            if (!$usuario->hasErrors() && $usuariosTable->save($usuario)) {
-                $this->Flash->success('Usuario registrado correctamente');
-                return $this->redirect(['action' => 'login']);
-            }
-
-            $this->Flash->error('No se pudo registrar el usuario. Verifica los datos.');
-        }
-
-        $this->set(compact('usuario'));
-    }
-
-
-=======
->>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
     // Logout method
     public function logout()
     {
@@ -100,10 +68,6 @@ class PagesController extends AppController
         //  Acciones públicas
         $this->Authentication->addUnauthenticatedActions([
             'login',
-<<<<<<< HEAD
-            'register',
-=======
->>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
             'display'
         ]);
     }
