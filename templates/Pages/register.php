@@ -13,7 +13,7 @@
 
     <!-- Formulario -->
     <?= $this->Form->create($usuario, [
-        'url' => ['controller' => 'Pages', 'action' => 'register'],
+        'url' => ['/register' => 'Pages', 'action' => 'register'],
         'style' => 'margin: 0;'
     ]) ?>
     <fieldset style="border: none; padding: 0;">
