@@ -5,11 +5,8 @@
  * @var \Cake\Collection\CollectionInterface|string[] $categorias
  */
 ?>
-<<<<<<< HEAD
-=======
 <?= $this->Html->css('productos') ?>
 
->>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
 <div class="row">
     <aside class="column">
         <div class="side-nav">

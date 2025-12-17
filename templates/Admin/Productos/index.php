@@ -4,12 +4,9 @@
  * @var iterable<\App\Model\Entity\Producto> $productos
  */
 ?>
-<<<<<<< HEAD
-=======
 <?= $this->Html->css('productos') ?>
 
 
->>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
 <div class="productos index content">
     <?= $this->Html->link(__('New Producto'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Productos') ?></h3>

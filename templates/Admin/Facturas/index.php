@@ -4,12 +4,9 @@
  * @var iterable<\App\Model\Entity\Factura> $facturas
  */
 ?>
-<<<<<<< HEAD
-=======
 <?= $this->Html->css('facturas') ?>
 <div class="facturas content index">
 
->>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
 <div class="facturas index content">
     <?= $this->Html->link(__('New Factura'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Facturas') ?></h3>

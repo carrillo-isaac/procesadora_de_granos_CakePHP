@@ -1,104 +1,93 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+<?php
+$title = 'Nuevo Usuario';
+echo $this->element('admin/page-header', compact('title'));
+?>
+
 <style>
-    
     .usuarios-form-wrapper {
-        display: flex !important;
-        justify-content: center !important;
-        padding: 50px !important;
-        background-color: #f4f7f6 !important;
+        display: flex;
+        justify-content: center;
+        padding: 50px;
+        background-color: #f4f7f6;
     }
+
     .usuario-card {
-        background: white !important;
-        padding: 40px !important;
-        border-radius: 15px !important;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
-        width: 450px !important;
-        border-top: 8px solid #2e4a2a !important; /* El verde de tu logo */
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        width: 450px;
+        border-top: 8px solid #2e4a2a;
     }
-    .usuario-card h2 { color: #2e4a2a; text-align: center; }
-    .input label { font-weight: bold; color: #333; display: block; margin-top: 10px; }
-    .input input, .input select { 
-        width: 100%; 
-        padding: 10px; 
-        border: 1px solid #ccc; 
-        border-radius: 5px; 
+
+    .usuario-card h2 {
+        color: #2e4a2a;
+        text-align: center;
+        margin-bottom: 30px;
     }
+
+    .input label {
+        font-weight: bold;
+        color: #333;
+        margin-top: 15px;
+        display: block;
+    }
+
+    .input input,
+    .input select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
     button {
-        background: #2e4a2a !important;
-        color: white !important;
+        background: #2e4a2a;
+        color: white;
         width: 100%;
         padding: 15px;
         border: none;
         border-radius: 5px;
-        margin-top: 20px;
+        margin-top: 25px;
         cursor: pointer;
+    }
+
+    button:hover {
+        background: #243d22;
     }
 </style>
 
 <div class="usuarios-form-wrapper">
     <div class="usuario-card">
         <h2>Nuevo Usuario</h2>
-        <div class="input"><label>Nombre</label><input type="text" placeholder="Nombre completo"></div>
-        <div class="input"><label>Correo</label><input type="email" placeholder="correo@ejemplo.com"></div>
-        <div class="input"><label>Contraseña</label><input type="password"></div>
-        <div class="input">
-            <label>Rol</label>
-            <select><option>Cliente</option><option>Admin</option></select>
-=======
-<?php
-$title = 'Nuevo Usuario';
 
-echo $this->element('admin/page-header', compact('title'));
-?>
-<<<<<<< HEAD
-=======
+        <?= $this->Form->create($usuario) ?>
 
->>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Usuarios'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column column-80">
-        <div class="usuarios form content">
-            <?= $this->Form->create($usuario) ?>
-            <fieldset>
-                <legend><?= __('Add Usuario') ?></legend>
-                <?php
-                    echo $this->Form->control('nombre');
-                    echo $this->Form->control('password');
-                    echo $this->Form->control('email');
-                    echo $this->Form->control('rol');
-                    echo $this->Form->control('creado_en');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
->>>>>>> a369773260269c4791bfdf972695e8436dcf92ac
-        </div>
-        <button>Guardar Usuario</button>
+        <?= $this->Form->control('nombre', [
+            'label' => 'Nombre',
+            'placeholder' => 'Nombre completo'
+        ]) ?>
+
+        <?= $this->Form->control('email', [
+            'label' => 'Correo',
+            'placeholder' => 'correo@ejemplo.com'
+        ]) ?>
+
+        <?= $this->Form->control('password', [
+            'label' => 'Contraseña'
+        ]) ?>
+
+        <?= $this->Form->control('rol', [
+            'label' => 'Rol',
+            'type' => 'select',
+            'options' => [
+                'cliente' => 'Cliente',
+                'admin' => 'Admin'
+            ]
+        ]) ?>
+
+        <?= $this->Form->button('Guardar Usuario') ?>
+
+        <?= $this->Form->end() ?>
     </div>
 </div>
-=======
-
-<?php $this->start('content'); ?>
-<div class="card">
-    <?= $this->Form->create($usuario) ?>
-    <?= $this->Form->control('nombre') ?>
-    <?= $this->Form->control('email') ?>
-    <?= $this->Form->control('password') ?>
-    <?= $this->Form->control('rol') ?>
-    <?= $this->Form->button('Guardar', ['class' => 'btn btn-primary']) ?>
-    <?= $this->Form->end() ?>
-</div>
-<?php $this->end(); ?>
-
-<?= $this->element('admin/crud-layout') ?>
-<<<<<<< HEAD
->>>>>>> feature/Admin
-=======
-
->>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)

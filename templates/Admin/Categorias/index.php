@@ -4,11 +4,8 @@
  * @var iterable<\App\Model\Entity\Categoria> $categorias
  */
 ?>
-<<<<<<< HEAD
-=======
 <?= $this->Html->css('categorias') ?>
 
->>>>>>> ba4d536 (Agregando estilos a paginas faltantes.)
 <div class="categorias index content">
     <?= $this->Html->link(__('New Categoria'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Categorias') ?></h3>

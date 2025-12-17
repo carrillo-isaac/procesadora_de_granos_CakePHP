@@ -18,7 +18,7 @@
             </section>
             <!-- Agregar todos los productos -->
             <section class="lista-productos">
-            <h2>lista de productos</h2>
+            <h2 class="title-productos">Listado de productos</h2>
                 <div id="contenedor-productos" data-track="contenedor-productos">
                     
                 </div>
