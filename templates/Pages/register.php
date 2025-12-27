@@ -1,3 +1,5 @@
+
+
 <div class="usuarios form content" style="max-width: 450px; margin: 80px auto; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 12px; background: white; border-top: 5px solid #006747;">
 
     <!-- Icono y título con colores Miró -->
@@ -13,7 +15,7 @@
 
     <!-- Formulario -->
     <?= $this->Form->create($usuario, [
-        'url' => ['/register' => 'Pages', 'action' => 'register'],
+        'url' => ['controller' => 'Pages', 'action' => 'register'],
         'style' => 'margin: 0;'
     ]) ?>
     <fieldset style="border: none; padding: 0;">

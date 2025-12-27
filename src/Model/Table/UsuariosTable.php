@@ -82,6 +82,10 @@ class UsuariosTable extends Table
         $validator
             ->dateTime('creado_en')
             ->allowEmptyDateTime('creado_en');
+        
+        $validator
+            ->notEmptyString('password_confirm')
+            ->sameAs('password_confirm', 'password', 'Las contraseñas no coinciden');
 
         return $validator;
     }
